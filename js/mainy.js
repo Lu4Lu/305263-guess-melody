@@ -7,7 +7,6 @@ const ARROW = {
 
 const mainElement = document.querySelector(`.main`);
 const arrowsWrapElement = document.createElement(`div`);
-// const arrowButtonElements;
 
 const selectSlide = (element) => {
   mainElement.innerHTML = ``;
@@ -38,6 +37,16 @@ function drawArrows() {
 `;
   mainElement.appendChild(arrowsWrapElement);
   window.arrowButtonElements = arrowsWrapElement.querySelectorAll(`.arrows__btn`);
+
+  window.arrowButtonElements[0].addEventListener(`mousedown`, () => {
+    // evt.preventDefault();
+    select(current - 1);
+  });
+
+  window.arrowButtonElements[1].addEventListener(`mousedown`, () => {
+    // evt.preventDefault();
+    select(current + 1);
+  });
 }
 
 const screens = Array.from(document.querySelectorAll(`template`)).
@@ -64,18 +73,3 @@ document.addEventListener(`keydown`, (evt) => {
 });
 
 select(0);
-
-
-// arrowButtonElements[0].classList.add(`backward`);
-// arrowButtonElements[1].classList.add(`forward`);
-
-
-window.arrowButtonElements[0].addEventListener(`mousedown`, () => {
-  // evt.preventDefault();
-  select(current - 1);
-});
-
-window.arrowButtonElements[1].addEventListener(`mousedown`, () => {
-  // evt.preventDefault();
-  select(current + 1);
-});
