@@ -14,7 +14,7 @@ const selectSlide = (element) => {
 };
 
 
-function drawArrows() {
+const drawArrows = () => {
   arrowsWrapElement.setAttribute(`class`, `arrows_wrap`);
   arrowsWrapElement.innerHTML = `
     <div class="arrows__wrap">
@@ -47,7 +47,7 @@ function drawArrows() {
     // evt.preventDefault();
     select(current + 1);
   });
-}
+};
 
 const screens = Array.from(document.querySelectorAll(`template`)).
 map((it) => it.content);
