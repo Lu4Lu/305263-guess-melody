@@ -38,12 +38,12 @@ const drawArrows = () => {
   mainElement.appendChild(arrowsWrapElement);
   window.arrowButtonElements = arrowsWrapElement.querySelectorAll(`.arrows__btn`);
 
-  window.arrowButtonElements[0].addEventListener(`mousedown`, () => {
+  window.arrowButtonElements[0].addEventListener(`click`, () => {
     // evt.preventDefault();
     select(current - 1);
   });
 
-  window.arrowButtonElements[1].addEventListener(`mousedown`, () => {
+  window.arrowButtonElements[1].addEventListener(`click`, () => {
     // evt.preventDefault();
     select(current + 1);
   });
