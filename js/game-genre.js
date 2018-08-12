@@ -1,8 +1,9 @@
-import getElementFromTemplate from './js/create-element.js';
+import {changeScreen, render} from "./utils.js";
+import gameArtist from "./game-artist.js";
+import welcome from "./welcome.js";
 
-const playButtonElement = document.querySelector(`.welcome__button`);
-
-const moduleGameGenre = getElementFromTemplate(`
+// html for the current screen
+const template = `
   <section class="game game--genre">
     <header class="game__header">
       <a class="game__back" href="#">
@@ -12,7 +13,7 @@ const moduleGameGenre = getElementFromTemplate(`
 
       <svg xmlns="http://www.w3.org/2000/svg" class="timer" viewBox="0 0 780 780">
         <circle class="timer__line" cx="390" cy="390" r="370"
-                style="filter: url(screens#blur); transform: rotate(-90deg) scaleY(-1); transform-origin: center"/>
+                style="filter: url(#blur); transform: rotate(-90deg) scaleY(-1); transform-origin: center"/>
       </svg>
 
       <div class="timer__value" xmlns="http://www.w3.org/1999/xhtml">
@@ -79,11 +80,17 @@ const moduleGameGenre = getElementFromTemplate(`
       </form>
     </section>
   </section>
-  `);
+  `;
 
-playButtonElement.addEventListener(`click`, () => {
+// show the current screen
+const element = render(template);
 
+const gameSubmitElement = element.querySelector(`.game-submit`);
+// gameSubmitElement.disabled = true;
+gameSubmitElement.addEventListener(`click`, () => changeScreen(gameArtist));
 
-});
+const gameBackElement = document.querySelector(`.game__back`);
+gameBackElement.addEventListener(`click`, () => changeScreen(welcome));
 
-export default moduleGameGenre;
+export default element;
+

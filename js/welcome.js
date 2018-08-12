@@ -1,10 +1,9 @@
-import {changeScreen, render} from './js/utils.js';
-import moduleGameGenre from '/.js/game-genre.js';
+import {changeScreen, render} from './utils.js';
+import gameGenre from './game-genre.js';
 
-const mainElement = document.querySelector(`.main`);
-const playButtonElement = document.querySelector(`.welcome__button`);
+// const mainElement = document.querySelector(`.main`);
 
-// html for the current screen
+// welcome screen
 const template = `
   <section class="welcome">
     <div class="welcome__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
@@ -16,14 +15,13 @@ const template = `
       <li>Можно допустить 3 ошибки.</li>
     </ul>
     <p class="welcome__text">Удачи!</p>
-  </section>`;
+  </section>
+`;
 
 const element = render(template);
 
-mainElement.appendChild(element);
-
-playButtonElement.addEventListener(`click`, () => {
-  changeScreen(moduleGameGenre);
-});
+// on click play button show game genre screen
+const playButtonElement = element.querySelector(`.welcome__button`);
+playButtonElement.addEventListener(`click`, () => changeScreen(gameGenre));
 
 export default element;
