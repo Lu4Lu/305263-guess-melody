@@ -1,8 +1,8 @@
 import {changeScreen, render} from "./utils.js";
 import gameArtist from "./game-artist.js";
-import welcome from "./welcome.js";
+// import welcome from "./welcome.js";
 
-// html for the current screen
+// game genre screen
 const template = `
   <section class="game game--genre">
     <header class="game__header">
@@ -87,10 +87,9 @@ const element = render(template);
 
 const gameSubmitElement = element.querySelector(`.game-submit`);
 // gameSubmitElement.disabled = true;
-gameSubmitElement.addEventListener(`click`, () => changeScreen(gameArtist));
-
-const gameBackElement = document.querySelector(`.game__back`);
-gameBackElement.addEventListener(`click`, () => changeScreen(welcome));
+gameSubmitElement.addEventListener(`click`, () => {
+  changeScreen(gameArtist);
+});
 
 export default element;
 

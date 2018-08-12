@@ -2,7 +2,8 @@ import {changeScreen, render} from './utils.js';
 
 import welcome from './welcome.js';
 
-const template = ` 
+// result success screen
+const template = `
   <section class="result">
     <div class="result__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
     <h2 class="result__title">Какая жалость!</h2>
@@ -13,8 +14,7 @@ const template = `
 
 const element = render(template);
 
-const welcomeButton = element.querySelector(`.result__logo`);
-
-welcomeButton.addEventListener(`click`, () => changeScreen(welcome));
+const logoElement = element.querySelector(`.result__logo`);
+logoElement.addEventListener(`click`, () => changeScreen(welcome));
 
 export default element;

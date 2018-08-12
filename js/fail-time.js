@@ -13,8 +13,7 @@ const template = `
 
 const element = render(template);
 
-const welcomeButton = element.querySelector(`.result__logo`);
-
-welcomeButton.addEventListener(`click`, () => changeScreen(welcome));
+const logoElement = element.querySelector(`.result__logo`);
+logoElement.addEventListener(`click`, () => changeScreen(welcome));
 
 export default element;

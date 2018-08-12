@@ -1,8 +1,8 @@
 import {changeScreen, render} from "./utils.js";
 import resultSuccess from "./result-success.js";
-import welcome from "./welcome.js";
+// import welcome from "./welcome.js";
 
-// html for the current screen
+// game artist screen
 const template = `
   <section class="game game--artist">
     <header class="game__header">
@@ -64,14 +64,10 @@ const template = `
   </section>
   `;
 
-// show the current screen
 const element = render(template);
 
-Array.from(element.querySelectorAll(`.artist__name`)).forEach((button) => {
-  button.addEventListener(`click`, () => changeScreen(resultSuccess));
+Array.from(element.querySelectorAll(`.artist__name`)).forEach((name) => {
+  name.addEventListener(`click`, () => changeScreen(resultSuccess));
 });
-
-const gameBackElement = element.querySelector(`.game__back`);
-gameBackElement.addEventListener(`click`, () => changeScreen(welcome));
 
 export default element;

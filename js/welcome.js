@@ -1,8 +1,6 @@
 import {changeScreen, render} from './utils.js';
 import gameGenre from './game-genre.js';
 
-// const mainElement = document.querySelector(`.main`);
-
 // welcome screen
 const template = `
   <section class="welcome">
@@ -20,8 +18,10 @@ const template = `
 
 const element = render(template);
 
-// on click play button show game genre screen
+// click on play button shows game genre screen
 const playButtonElement = element.querySelector(`.welcome__button`);
-playButtonElement.addEventListener(`click`, () => changeScreen(gameGenre));
+playButtonElement.addEventListener(`click`, () => {
+  changeScreen(gameGenre);
+});
 
 export default element;
