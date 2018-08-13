@@ -1,4 +1,4 @@
-import {changeScreen, render} from './utils.js';
+import {changeScreen, render} from '../utils.js';
 import gameGenre from './game-genre.js';
 
 // welcome screen

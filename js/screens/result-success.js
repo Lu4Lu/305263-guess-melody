@@ -1,4 +1,4 @@
-import {changeScreen, render} from './utils.js';
+import {changeScreen, render} from '../utils.js';
 import welcome from "./welcome";
 
 // result success screen

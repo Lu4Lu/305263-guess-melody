@@ -1,4 +1,4 @@
-import {changeScreen, render} from "./utils.js";
+import {changeScreen, render} from "../utils.js";
 
 import welcome from "./welcome.js";
 import gameArtist from "./game-artist.js";
@@ -93,34 +93,7 @@ gameSubmitElement.addEventListener(`click`, () => {
   changeScreen(gameArtist);
 });
 
-// const showArtist = () => {
-//   gameSubmitElement.disabled = false;
-//   gameSubmitElement.addEventListener(`click`, () => changeScreen(gameArtist));
-// };
-
-// Array.from(element.querySelectorAll(`.game__answer`)).forEach((answer) => {
-//   answer.addEventListener(`click`, () => {
-//     answer.focus();
-//     showArtist();
-//   });
-// });
-
 const answerElements = Array.from(element.querySelectorAll(`input`));
-
-// Array.from(element.querySelectorAll(`input`)).forEach((answer) => {
-//   answer.addEventListener(`click`, () => {
-//     gameSubmitElement.disabled = false;
-//     gameSubmitElement.addEventListener(`click`, () => changeScreen(gameArtist));
-//   });
-//     // if () {
-//     //   gameSubmitElement.disabled = false;
-//     // } else {
-//     //   gameSubmitElement.disabled = true;
-//     // }
-//     // answer.focus();
-//     // showArtist();
-//   // });
-// });
 
 const showArtist = () => {
   changeScreen(gameArtist);
@@ -140,21 +113,6 @@ answerElements.forEach((item) => {
 });
 
 gameSubmitElement.addEventListener(`click`, showArtist);
-
-// Array.from(element.querySelectorAll(`input`)).forEach((answer) => {
-//   answer.addEventListener(`click`, () => {
-//     gameSubmitElement.disabled = false;
-//     gameSubmitElement.addEventListener(`click`, () => changeScreen(gameArtist));
-//   });
-//     // if () {
-//     //   gameSubmitElement.disabled = false;
-//     // } else {
-//     //   gameSubmitElement.disabled = true;
-//     // }
-//     // answer.focus();
-//     // showArtist();
-//   // });
-// });
 
 const gameBackElement = element.querySelector(`.game__back`);
 gameBackElement.addEventListener(`click`, () => changeScreen(welcome));

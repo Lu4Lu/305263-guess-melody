@@ -1,4 +1,4 @@
-import {changeScreen, render, getRandomInt} from "./utils.js";
+import {changeScreen, render, getRandomInt} from "../utils.js";
 import resultSuccess from "./result-success.js";
 import failTime from "./fail-time";
 import failTries from "./fail-time";
