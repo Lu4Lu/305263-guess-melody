@@ -10,3 +10,7 @@ export const changeScreen = (element) => {
   mainElement.innerHTML = ``;
   mainElement.appendChild(element);
 };
+
+export const getRandomInt = (max) => {
+  return Math.floor(Math.random() * Math.floor(max));
+};

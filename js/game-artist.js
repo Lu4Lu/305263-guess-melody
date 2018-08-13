@@ -1,6 +1,8 @@
-import {changeScreen, render} from "./utils.js";
+import {changeScreen, render, getRandomInt} from "./utils.js";
 import resultSuccess from "./result-success.js";
-// import welcome from "./welcome.js";
+import failTime from "./fail-time";
+import failTries from "./fail-time";
+
 
 // game artist screen
 const template = `
@@ -66,8 +68,31 @@ const template = `
 
 const element = render(template);
 
+// const showResult = () => {
+//
+//   let ifWin = getRandomInt(3);
+//
+//   if (ifWin < 1) {
+//     changeScreen(resultSuccess);
+//   } else if (ifWin > 2) {
+//     changeScreen(failTime);
+//   } else {
+//     changeScreen(failTries);
+//   }
+// };
+
 Array.from(element.querySelectorAll(`.artist__name`)).forEach((name) => {
-  name.addEventListener(`click`, () => changeScreen(resultSuccess));
+  name.addEventListener(`click`, () => {
+    let ifWin = getRandomInt(3);
+
+    if (ifWin < 1) {
+      changeScreen(resultSuccess);
+    } else if (ifWin > 2) {
+      changeScreen(failTime);
+    } else {
+      changeScreen(failTries);
+    }
+  });
 });
 
 export default element;

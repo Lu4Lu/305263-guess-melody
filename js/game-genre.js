@@ -1,6 +1,7 @@
 import {changeScreen, render} from "./utils.js";
+
+import welcome from "./welcome.js";
 import gameArtist from "./game-artist.js";
-// import welcome from "./welcome.js";
 
 // game genre screen
 const template = `
@@ -85,11 +86,26 @@ const template = `
 // show the current screen
 const element = render(template);
 
-const gameSubmitElement = element.querySelector(`.game-submit`);
+const gameSubmitElement = element.querySelector(`.game__submit`);
 // gameSubmitElement.disabled = true;
 gameSubmitElement.addEventListener(`click`, () => {
   changeScreen(gameArtist);
 });
+
+const showArtist = () => {
+  gameSubmitElement.disabled = false;
+  gameSubmitElement.addEventListener(`click`, () => changeScreen(gameArtist));
+};
+
+Array.from(element.querySelectorAll(`.game__answer`)).forEach((answer) => {
+  answer.addEventListener(`click`, () => {
+    answer.focus();
+    showArtist();
+  });
+});
+
+const gameBackElement = element.querySelector(`.game__back`);
+gameBackElement.addEventListener(`click`, () => changeScreen(welcome));
 
 export default element;
 

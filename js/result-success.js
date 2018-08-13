@@ -1,5 +1,5 @@
 import {changeScreen, render} from './utils.js';
-// import welcome from './welcome.js';
+import welcome from "./welcome";
 
 // result success screen
 const template = `
@@ -16,5 +16,8 @@ const element = render(template);
 
 const logoElement = element.querySelector(`.result__logo`);
 logoElement.addEventListener(`click`, () => changeScreen(welcome));
+
+const replayElement = element.querySelector(`.result__replay`);
+replayElement.addEventListener(`click`, () => changeScreen(welcome));
 
 export default element;
