@@ -87,22 +87,74 @@ const template = `
 const element = render(template);
 
 const gameSubmitElement = element.querySelector(`.game__submit`);
-// gameSubmitElement.disabled = true;
+gameSubmitElement.disabled = true;
+
 gameSubmitElement.addEventListener(`click`, () => {
   changeScreen(gameArtist);
 });
 
-const showArtist = () => {
-  gameSubmitElement.disabled = false;
-  gameSubmitElement.addEventListener(`click`, () => changeScreen(gameArtist));
-};
+// const showArtist = () => {
+//   gameSubmitElement.disabled = false;
+//   gameSubmitElement.addEventListener(`click`, () => changeScreen(gameArtist));
+// };
 
-Array.from(element.querySelectorAll(`.game__answer`)).forEach((answer) => {
-  answer.addEventListener(`click`, () => {
-    answer.focus();
-    showArtist();
+// Array.from(element.querySelectorAll(`.game__answer`)).forEach((answer) => {
+//   answer.addEventListener(`click`, () => {
+//     answer.focus();
+//     showArtist();
+//   });
+// });
+
+const answerElements = Array.from(element.querySelectorAll(`input`));
+
+// Array.from(element.querySelectorAll(`input`)).forEach((answer) => {
+//   answer.addEventListener(`click`, () => {
+//     gameSubmitElement.disabled = false;
+//     gameSubmitElement.addEventListener(`click`, () => changeScreen(gameArtist));
+//   });
+//     // if () {
+//     //   gameSubmitElement.disabled = false;
+//     // } else {
+//     //   gameSubmitElement.disabled = true;
+//     // }
+//     // answer.focus();
+//     // showArtist();
+//   // });
+// });
+
+const showArtist = () => {
+  changeScreen(gameArtist);
+  answerElements.forEach((item) => {
+    item.checked = false;
+  });
+}
+
+answerElements.forEach((item) => {
+  item.addEventListener(`change`, () => {
+    if (answerElements.some((answer) => answer.checked)) {
+      gameSubmitElement.disabled = false;
+    } else {
+      gameSubmitElement.disabled = true;
+    }
   });
 });
+
+gameSubmitElement.addEventListener(`click`, showArtist);
+
+// Array.from(element.querySelectorAll(`input`)).forEach((answer) => {
+//   answer.addEventListener(`click`, () => {
+//     gameSubmitElement.disabled = false;
+//     gameSubmitElement.addEventListener(`click`, () => changeScreen(gameArtist));
+//   });
+//     // if () {
+//     //   gameSubmitElement.disabled = false;
+//     // } else {
+//     //   gameSubmitElement.disabled = true;
+//     // }
+//     // answer.focus();
+//     // showArtist();
+//   // });
+// });
 
 const gameBackElement = element.querySelector(`.game__back`);
 gameBackElement.addEventListener(`click`, () => changeScreen(welcome));
