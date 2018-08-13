@@ -14,9 +14,6 @@ const template = `
 
 const element = render(template);
 
-const logoElement = element.querySelector(`.result__logo`);
-logoElement.addEventListener(`click`, () => changeScreen(welcome));
-
 const replayElement = element.querySelector(`.result__replay`);
 replayElement.addEventListener(`click`, () => changeScreen(welcome));
 

@@ -2,6 +2,7 @@ import {changeScreen, render, getRandomInt} from "./utils.js";
 import resultSuccess from "./result-success.js";
 import failTime from "./fail-time";
 import failTries from "./fail-time";
+import welcome from "./welcome";
 
 
 // game artist screen
@@ -94,5 +95,8 @@ Array.from(element.querySelectorAll(`.artist__name`)).forEach((name) => {
     }
   });
 });
+
+const gameBackElement = element.querySelector(`.game__back`);
+gameBackElement.addEventListener(`click`, () => changeScreen(welcome));
 
 export default element;
