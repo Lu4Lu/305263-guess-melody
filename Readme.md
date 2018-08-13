@@ -1,7 +1,7 @@
 # Личный проект «Угадай мелодию» [![Build status][travis-image]][travis-url]
 
 * Студент: [Ольга Лученок](https://up.htmlacademy.ru/ecmascript/6/user/305263).
-* Наставник: [Данил Панкрашин](https://htmlacademy.ru/profile/danpan).
+* Наставник: Не известно.
 
 ---
 
