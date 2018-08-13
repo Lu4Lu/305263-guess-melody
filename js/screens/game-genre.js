@@ -100,7 +100,7 @@ const showArtist = () => {
   answerElements.forEach((item) => {
     item.checked = false;
   });
-}
+};
 
 answerElements.forEach((item) => {
   item.addEventListener(`change`, () => {
