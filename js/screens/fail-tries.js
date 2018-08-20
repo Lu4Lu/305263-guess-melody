@@ -1,8 +1,6 @@
-import {changeScreen, render} from '../utils.js';
+import {render} from '../utils.js';
 
-import welcome from './welcome.js';
-
-// result success screen
+// fail tries screen
 const template = `
   <section class="result">
     <div class="result__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
@@ -14,7 +12,6 @@ const template = `
 
 const element = render(template);
 
-const replayElement = element.querySelector(`.result__replay`);
-replayElement.addEventListener(`click`, () => changeScreen(welcome));
+export const replayElement = element.querySelector(`.result__replay`);
 
 export default element;

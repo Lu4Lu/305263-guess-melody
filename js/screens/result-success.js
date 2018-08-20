@@ -1,5 +1,4 @@
-import {changeScreen, render} from '../utils.js';
-import welcome from "./welcome";
+import {render} from '../utils.js';
 
 // result success screen
 const template = `
@@ -14,7 +13,6 @@ const template = `
 
 const element = render(template);
 
-const replayElement = element.querySelector(`.result__replay`);
-replayElement.addEventListener(`click`, () => changeScreen(welcome));
+export const replayElement = element.querySelector(`.result__replay`);
 
 export default element;
