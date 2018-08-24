@@ -1,11 +1,3 @@
-// const statistics = [4, 5, 8, 10, 11];
-
-// const gameResult = {
-//   points: 10,
-//   notes: 3,
-//   time: 100
-// };
-
 
 // Функция на вход принимает массив результатов игр других игроков;
 // Функция на вход принимает объект результата с кол-вом набранных баллов,
@@ -19,9 +11,6 @@ export const showResults = (statistics, gameResult) => {
   if (gameResult.notes > 3) {
     return `У вас закончились все попытки. Ничего, повезёт в следующий раз!`;
   }
-
-  // const statistics = [4, 5, 8, 10, 11];
-
 
   const playerPoints = gameResult.points;
   const points = statistics;
@@ -37,6 +26,6 @@ export const showResults = (statistics, gameResult) => {
   // Вы заняли i место из t игроков.
   // Это лучше, чем у n% игроков,
   // где i — место, которое занял пользователь, t — общее кол-во игроков, n — процент успеха игрока;
-  return `Вы заняли ${place} место из ${players} игроков. Это лучше, чем у ${rate}% игроков`;
+  return `Вы заняли ${place} место из ${players} игроков. Это лучше, чем у ${rate}% игроков.`;
 };
 
