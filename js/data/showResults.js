@@ -13,7 +13,7 @@ export const showResults = (statistics, gameResult) => {
   }
 
   const playerPoints = gameResult.points;
-  const points = statistics;
+  const points = statistics.slice();
 
   points.push(playerPoints);
   points.sort((a, b) => b - a);

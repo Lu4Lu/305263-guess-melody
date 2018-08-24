@@ -22,11 +22,11 @@ describe(`Show results`, () => {
     assert.equal(showResults(statistics, getGameResult(20, 3, 299)), `Вы заняли 1 место из 5 игроков. Это лучше, чем у 80% игроков.`);
   });
 
-  it(`should return _Вы заняли 4 место из 5 игроков. Это лучше, чем у 20% игроков._`, () => {
-    assert.equal(showResults(statistics, getGameResult(7, 2, 299)), `Вы заняли 4 место из 5 игроков. Это лучше, чем у 20% игроков.`);
+  it(`should return _Вы заняли 3 место из 5 игроков. Это лучше, чем у 40% игроков._`, () => {
+    assert.equal(showResults(statistics, getGameResult(7, 2, 299)), `Вы заняли 3 место из 5 игроков. Это лучше, чем у 40% игроков.`);
   });
 
   it(`should return _Вы заняли 5 место из 5 игроков. Это лучше, чем у 0% игроков._`, () => {
-    assert.equal(showResults(statistics, getGameResult(7, 2, 299)), `Вы заняли 5 место из 5 игроков. Это лучше, чем у 0% игроков.`);
+    assert.equal(showResults(statistics, getGameResult(2, 0, 299)), `Вы заняли 5 место из 5 игроков. Это лучше, чем у 0% игроков.`);
   });
 });
