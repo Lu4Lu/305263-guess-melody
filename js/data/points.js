@@ -1,44 +1,44 @@
+const QUICK_TIME = 30;
 const MAX_QUESTIONS = 10;
-const FAST_TIME = 30;
 
+
+// За правильный ответ 1 балл;
+// За быстрый правильный ответ (менее 30 секунд) — 2 балла;
+// За каждую ошибку вычитается 2 балла.
 const Points = {
-  NOT_ALL: -1,
-  ANSWERED: 1,
-  FAST: 2,
-  WRONG: -2
+  DEFAULT_CORRECT: 1,
+  QUICK_CORRECT: 2,
+  WRONG: -2,
 };
 
-export const getAnswers = (dataType, answerTime, count) => {
-  const answers = new Array(count).fill({
-    correct: dataType,
-    time: answerTime
-  });
-  return answers;
-};
-
+// Функция подсчёта набранных баллов игрока:
+// на вход принимает массив ответов пользователя;
+// на вход принимает кол-во оставшихся нот;
 export const calculatePoints = (answers, notes) => {
 
   let points = 0;
 
   if (answers.length < MAX_QUESTIONS) {
-    return Points.NOT_ALL;
+    return -1;
   }
 
   if (notes < 0) {
-    throw new Error(`Notes should be >= 0`);
+    throw new Error(`Notes amount should not be negative.`);
   }
 
   answers.forEach((answer) => {
-    if (answer.correct && answer.time < FAST_TIME) {
-      points += Points.FAST;
+
+    if (answer.correct && answer.time < QUICK_TIME) {
+      points += Points.QUICK_CORRECT;
     }
-    if (answer.correct && answer.time >= FAST_TIME) {
-      points += Points.ANSWERED;
+
+    if (answer.correct && answer.time >= QUICK_TIME) {
+      points += Points.DEFAULT_CORRECT;
     }
     if (!answer.correct) {
       points += Points.WRONG;
     }
   });
+
   return points;
 };
-

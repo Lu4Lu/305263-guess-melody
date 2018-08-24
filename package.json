@@ -9,7 +9,8 @@
     "build": "gulp build",
     "start": "gulp serve",
     "eslint": "eslint ./gulpfile.js js/",
-    "test": "npm run eslint && npm run stylelint && gulp test"
+    "test:full": "npm run eslint && npm run stylelint && gulp test",
+    "test": "gulp test"
   },
   "devDependencies": {
     "autoprefixer": "9.0.2",
