@@ -1,28 +1,26 @@
 import {render} from '../utils.js';
 
 export const welcomeContent = {
-  logo: `not active!`,
-  button: `not active!`,
+  button: `Начать игру`,
   content: {
     title: `Правила игры!`,
     text: `Правила просты:`,
-    rules: new Set([`За 5 минут нужно ответить на все вопросы.`, `Можно допустить 3 ошибки.`])
-  },
-  creationDate: `2016 — 2017`
+    rules: new Set([`За 5 минут нужно ответить на все вопросы.`, `Можно допустить 3 ошибки.`]),
+    lastText: `Удачи!`
+  }
 };
 
 // welcome screen
 const template = `
   <section class="welcome">
     <div class="welcome__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
-    <button class="welcome__button"><span class="visually-hidden">Начать игру</span></button>
-    <h2 class="welcome__rules-title">Правила игры</h2>
-    <p class="welcome__text">Правила просты:</p>
+    <button class="welcome__button"><span class="visually-hidden">${welcomeContent.button}</span></button>
+    <h2 class="welcome__rules-title">${welcomeContent.content.title}</h2>
+    <p class="welcome__text">>${welcomeContent.content.text}</p>
     <ul class="welcome__rules-list">
-      <li>За 5 минут нужно ответить на все вопросы.</li>
-      <li>Можно допустить 3 ошибки.</li>
+    ${[...welcomeContent.content.rules].map((rule) => `<li class="rule">${rule}</li>`).join(``)}
     </ul>
-    <p class="welcome__text">Удачи!</p>
+    <p class="welcome__text">${welcomeContent.content.lastText}</p>
   </section>
 `;
 
