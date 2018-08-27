@@ -1,5 +1,16 @@
 import {render} from '../utils.js';
 
+export const welcomeContent = {
+  logo: `not active!`,
+  button: `not active!`,
+  content: {
+    title: `Правила игры!`,
+    text: `Правила просты:`,
+    rules: new Set([`За 5 минут нужно ответить на все вопросы.`, `Можно допустить 3 ошибки.`])
+  },
+  creationDate: `2016 — 2017`
+};
+
 // welcome screen
 const template = `
   <section class="welcome">
