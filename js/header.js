@@ -1,10 +1,12 @@
-import {gameHeader} from "./screens/game-genre";
-import {render} from "./utils";
 
-const mainElement = document.querySelector(`.main`);
+const gameHeader = {
+  logoBack: `Сыграть ещё раз`,
+  time: new Set([`min`, `dots`, `secs`]),
+  notes: new Set([`correct`, `wrong`, `wrong`])
+};
 
 // header template
-const template = `
+const getHeader = (time) =>`
     <header class="game__header">
       <a class="game__back" href="#">
         <span class="visually-hidden">${gameHeader.logoBack}</span>
@@ -17,7 +19,7 @@ const template = `
       </svg>
 
       <div class="timer__value" xmlns="http://www.w3.org/1999/xhtml">      
-        <span class="timer__mins">05</span>
+        <span class="timer__mins">${time}</span>
         <span class="timer__dots">:</span>
         <span class="timer__secs">00</span>
       </div>
@@ -27,8 +29,4 @@ const template = `
     </header>
 `;
 
-const element = render(template);
-mainElement.appendChild(element);
-// export const gameGenreScreenElement = element;
-
-export default element;
+export default getHeader;

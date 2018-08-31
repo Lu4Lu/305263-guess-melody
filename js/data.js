@@ -79,6 +79,7 @@ const tracks =  [
 //   type: `artist`
 // };
 
+// levels
 export const questionsMockData = [
     {
       questionTitle: "Выберите 1",
@@ -106,19 +107,21 @@ export const questionsMockData = [
     {
       questionTitle: "Выберите 2",
       audio: tracks[4].src,
-      // answers: {},
-      // answer1: {avatar, name, isCorrect},
-      answer2: {},
-      answer3: {},
-      type: `artist`
+      answers: {
+        // answer1: {avatar, name, isCorrect},
+        answer2: {},
+        answer3: {},
+        type: `artist`
+      },
     },
     {
       questionTitle: "Выберите 3",
       audio: tracks[4].src,
-      // answers: {},
-      // answer1: {avatar, name, isCorrect},
-      answer2: {},
-      answer3: {},
+      answers: {
+        // answer1: {avatar, name, isCorrect},
+        answer2: {},
+        answer3: {},
+      },
       type: `artist`
     },
     {
@@ -144,9 +147,6 @@ export const questionsMockData = [
       type: `genre`
     },
 ];
-
-
-
 
 questionsMockData;
 
