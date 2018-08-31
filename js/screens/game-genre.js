@@ -1,41 +1,41 @@
 import {changeScreen, render} from "../utils.js";
+import {questionsMockData} from "../data";
 
 import gameArtist from "./game-artist.js";
+
+export const gameHeader = {
+  logoBack: `Сыграть ещё раз`,
+  time: new Set([`min`, `dots`, `secs`]),
+  notes: new Set([`correct`, `wrong`, `wrong`])
+};
+
+export const gameGenreContent = {
+  question: questionsMockData[0].questionTitle,
+  // 4 different tracks
+  track: {
+    button: `every time the button`,
+    audioSrc: new Audio(questionsMockData[0].tracks.answer1),
+    note: `every time a note`,
+  }
+};
+
+// <audio>
+// id="t-rex-roar"
+// src="http://soundbible.com/mp3/Tyrannosaurus%20Rex%20Roar-SoundBible.com-807702404.mp3">
+// </ audio>
 
 // game genre screen
 const template = `
   <section class="game game--genre">
-    <header class="game__header">
-      <a class="game__back" href="#">
-        <span class="visually-hidden">Сыграть ещё раз</span>
-        <img class="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию">
-      </a>
-
-      <svg xmlns="http://www.w3.org/2000/svg" class="timer" viewBox="0 0 780 780">
-        <circle class="timer__line" cx="390" cy="390" r="370"
-                style="filter: url(#blur); transform: rotate(-90deg) scaleY(-1); transform-origin: center"/>
-      </svg>
-
-      <div class="timer__value" xmlns="http://www.w3.org/1999/xhtml">
-        <span class="timer__mins">05</span>
-        <span class="timer__dots">:</span>
-        <span class="timer__secs">00</span>
-      </div>
-
-      <div class="game__mistakes">
-        <div class="wrong"></div>
-        <div class="wrong"></div>
-        <div class="wrong"></div>
-      </div>
-    </header>
-
+    //header
     <section class="game__screen">
-      <h2 class="game__title">Выберите инди-рок треки</h2>
+      <h2 class="game__title">${questionsMockData[0].questionTitle}</h2>
       <form class="game__tracks">
+      
         <div class="track">
           <button class="track__button track__button--play" type="button"></button>
           <div class="track__status">
-            <audio></audio>
+            <audio src="${questionsMockData[0].tracks.answer1}"> </audio>
           </div>
           <div class="game__answer">
             <input class="game__input visually-hidden" type="checkbox" name="answer" value="answer-1" id="answer-1">
@@ -46,7 +46,7 @@ const template = `
         <div class="track">
           <button class="track__button track__button--play" type="button"></button>
           <div class="track__status">
-            <audio></audio>
+            <audio src="${questionsMockData[0].tracks.answer2}"}></audio>
           </div>
           <div class="game__answer">
             <input class="game__input visually-hidden" type="checkbox" name="answer" value="answer-1" id="answer-2">
@@ -57,7 +57,7 @@ const template = `
         <div class="track">
           <button class="track__button track__button--pause" type="button"></button>
           <div class="track__status">
-            <audio></audio>
+            <audio src="${questionsMockData[0].tracks.answer3}"}></audio>
           </div>
           <div class="game__answer">
             <input class="game__input visually-hidden" type="checkbox" name="answer" value="answer-1" id="answer-3">
@@ -68,7 +68,7 @@ const template = `
         <div class="track">
           <button class="track__button track__button--play" type="button"></button>
           <div class="track__status">
-            <audio></audio>
+            <audio src="${questionsMockData[0].tracks.answer4}"}></audio>
           </div>
           <div class="game__answer">
             <input class="game__input visually-hidden" type="checkbox" name="answer" value="answer-1" id="answer-4">
