@@ -1,3 +1,10 @@
+import {getRandomInt} from "./utils";
+
+export const QuestionType = {
+  ARTIST: `artist`,
+  GENRE: `genre`
+};
+
 const tracks = [
   {
     artist: `Kevin MacLeod`,
@@ -65,7 +72,7 @@ export const questionsMockData = [
         isCorrect: true
       }
     },
-    type: `genre`
+    type: QuestionType.GENRE
   },
 
   {
@@ -87,7 +94,7 @@ export const questionsMockData = [
         name: tracks[2].name,
         isCorrect: false},
     },
-    type: `artist`
+    type: QuestionType.ARTIST
   },
   {
     questionTitle: `Выберите ${tracks[2].genre} треки`,
@@ -108,7 +115,7 @@ export const questionsMockData = [
         name: tracks[2].name,
         isCorrect: true},
     },
-    type: `artist`
+    type: QuestionType.ARTIST
   },
   {
     questionTitle: `Выберите ${tracks[3].genre} треки`,
@@ -130,7 +137,7 @@ export const questionsMockData = [
         isCorrect: true
       }
     },
-    type: `genre`
+    type: QuestionType.GENRE
   },
 ];
 
@@ -144,17 +151,17 @@ export const MAX_QUESTIONS = 10;
 export const MAX_ERRORS = 3;
 
 
-const shuffleArray = (arr) => {
-  for (let i = arr.length; i > 0; i--) {
-    [arr[i - 1], arr[Math.floor(Math.random() * i)]] = [arr[Math.floor(Math.random() * i)], arr[i - 1]];
-  }
-  return arr;
-};
+// const shuffleArray = (arr) => {
+//   for (let i = arr.length; i > 0; i--) {
+//     [arr[i - 1], arr[getRandomInt(i)]] = [arr[getRandomInt(i)], arr[i - 1]];
+//   }
+//   return arr;
+// };
 
-export const initialState = Object.freeze({
-  time: Time.MAX,
-  lives: 3,
-  questions: shuffleArray(questionsMockData),
-  level: 0,
-  answersArr: []
-});
+export const initialState = {
+  time: Time.MAX / 60,
+  notes: 3,
+  questions: questionsMockData,
+  level: 2,
+  answers: []
+};
