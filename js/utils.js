@@ -15,4 +15,4 @@ export const getRandomInt = (max) => {
   return Math.floor(Math.random() * Math.floor(max));
 };
 
-export const getFragmentFromString = (str) => new DOMParser().parseFromString(str, `text/html`).body.firstChild;
+// export const getFragmentFromString = (str) => new DOMParser().parseFromString(str, `text/html`).body.firstChild;

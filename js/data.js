@@ -96,6 +96,7 @@ export const questionsMockData = [
     },
     type: QuestionType.ARTIST
   },
+
   {
     questionTitle: `Выберите ${tracks[2].genre} треки`,
     audio: tracks[2].src,
@@ -162,6 +163,6 @@ export const initialState = {
   time: Time.MAX / 60,
   notes: 3,
   questions: questionsMockData,
-  level: 1,
+  level: 0,
   answers: []
 };

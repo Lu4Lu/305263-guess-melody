@@ -1,5 +1,4 @@
 import {render} from "../utils";
-import {questionsMockData, initialState} from "../data";
 
 // import resultSuccess from "./result-success";
 // import failTime from "./fail-time";
@@ -10,7 +9,9 @@ import {changeScreen} from "./change-screen";
 
 export const levelArtist = (state) => {
 
-  const artists = [...Object.entries(state.questions[state.level - 1].answers)].map(([key, artist]) => `
+  const gameLevel = state.questions[state.level - 1];
+
+  const artists = [...Object.entries(gameLevel.answers)].map(([key, artist]) => `
     <div class="artist">
       <input class="artist__input visually-hidden" type="radio" name="answer" value="${artist.isCorrect}" id="${key}">
       <label class="artist__name" for="${key}">
@@ -21,13 +22,13 @@ export const levelArtist = (state) => {
   // game artist screen
   const template = `
   <section class="game game--artist">
-    ${getHeader(initialState)}
+    ${getHeader(state)}
 
     <section class="game__screen">
-      <h2 class="game__title">${questionsMockData[1].questionTitle}</h2>
+      <h2 class="game__title">${gameLevel.questionTitle}</h2>
       <div class="game__track">
         <button class="track__button track__button--play" type="button"></button>
-        <audio src="${questionsMockData[1].audio}"></audio>
+        <audio src="${gameLevel.audio}"></audio>
       </div>
 
       <form class="game__artist">
@@ -41,17 +42,17 @@ export const levelArtist = (state) => {
 
   const artistBtnElement = Array.from(element.querySelectorAll(`.artist__name`));
 
-  // artistBtnElement.forEach((name) => {
-  //   name.addEventListener(`click`, () => {
-  //     let newState;
-  //     if (name) {
-  //       newState = Object.assign({}, state, {level: state.level + 1});
-  //     } else {
-  //       newState = Object.assign({}, state, {level: state.level + 1});
-  //     }
-  //     changeScreen(newState);
-  //   });
-  // });
+  artistBtnElement.forEach((name) => {
+    name.addEventListener(`click`, () => {
+      let newState;
+      if (name) {
+        newState = Object.assign({}, state, {level: state.level + 1});
+      } else {
+        newState = Object.assign({}, state, {level: state.level + 1});
+      }
+      changeScreen(newState);
+    });
+  });
 
   const answerElements = Array.from(element.querySelector(`.game__artist`).querySelectorAll(`.artist__input`));
 

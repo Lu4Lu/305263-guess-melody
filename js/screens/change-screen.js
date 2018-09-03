@@ -1,18 +1,17 @@
 /* eslint-disable */
 
 import {showScreen} from '../render';
-import {QuestionType, initialState} from '../data';
+import {QuestionType} from '../data';
 import {drawScreen} from "../utils";
 import {levelGenre} from './game-genre';
 import {levelArtist} from './game-artist';
 
-export const changeScreen = () => {
-  const questions = initialState.questions[initialState.level]
-  initialState.level = initialState.level + 1;
+export const changeScreen = (state) => {
+  const questions = state.questions[state.level]
   if (questions.type === QuestionType.ARTIST) {
-    drawScreen(levelArtist(initialState));
+    drawScreen(levelArtist(state));
   } else if (questions.type === QuestionType.GENRE) {
-    drawScreen(levelGenre(initialState));
+    drawScreen(levelGenre(state));
   }
 
   // if (state.lives < 0) {
