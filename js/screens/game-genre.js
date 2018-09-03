@@ -1,5 +1,4 @@
 import {render} from "../utils";
-import {initialState, questionsMockData} from "../data";
 import getHeader from "../header";
 
 // import {changeScreen} from "./change-screen";
@@ -9,7 +8,17 @@ import getHeader from "../header";
 
 export const levelGenre = (state) => {
 
-  const tracks = [...Object.entries(state.questions[state.level - 1].tracks)].map(([key, track]) => `
+  const levelIndex = state.level;
+  console.log(`level index: `, levelIndex);
+
+  console.log(`левел жанр`);
+  const gameLevel = state.questions[levelIndex];
+  console.log(`game level: `, gameLevel);
+
+  const levelTracks = [...Object.entries(gameLevel.tracks)];
+  console.log(`levelTracks: `, levelTracks);
+
+  const tracks = levelTracks.map(([key, track]) => `
       <div class="track">
         <button class="track__button track__button--play" type="button"></button>
         <div class="track__status">
@@ -24,9 +33,9 @@ export const levelGenre = (state) => {
   // game genre screen
   const template = `
   <section class="game game--genre">
-    ${getHeader(initialState)}
+    ${getHeader(state)}
     <section class="game__screen">
-      <h2 class="game__title">${questionsMockData[0].questionTitle}</h2>
+      <h2 class="game__title">${gameLevel.questionTitle}</h2>
       <form class="game__tracks"> 
         ${tracks}
         <button class="game__submit button" type="submit">Ответить</button>
