@@ -1,4 +1,4 @@
-import {changeScreen} from './utils';
+import {drawScreen} from './utils';
 import {questionsMockData} from "./data";
 import {welcomeScreenElement, playButtonElement} from './screens/welcome';
 // import {gameGenreScreenElement, gameBackElement as genreGameBack} from './screens/game-genre';
@@ -10,7 +10,7 @@ import {replayElement as failTriesReplayButton} from './screens/fail-tries';
 // import {levelGenre} from "./screens/game-genre";
 import {levelArtist} from "./screens/game-artist";
 
-changeScreen(welcomeScreenElement);
+drawScreen(welcomeScreenElement);
 
 const initialState = {
   time: 5,
@@ -23,11 +23,11 @@ const initialState = {
 // levelGenre(initialState)
 
 
-// playButtonElement.addEventListener(`click`, () => changeScreen(gameGenreScreenElement));
-// playButtonElement.addEventListener(`click`, () => changeScreen(levelGenre(initialState)));
-playButtonElement.addEventListener(`click`, () => changeScreen(levelArtist(initialState)));
-// genreGameBack.addEventListener(`click`, () => changeScreen(welcomeScreenElement));
-// artistGameBack.addEventListener(`click`, () => changeScreen(welcomeScreenElement));
-successReplayButton.addEventListener(`click`, () => changeScreen(welcomeScreenElement));
-failTimeReplayButton.addEventListener(`click`, () => changeScreen(welcomeScreenElement));
-failTriesReplayButton.addEventListener(`click`, () => changeScreen(welcomeScreenElement));
+// playButtonElement.addEventListener(`click`, () => drawScreen(gameGenreScreenElement));
+// playButtonElement.addEventListener(`click`, () => drawScreen(levelGenre(initialState)));
+playButtonElement.addEventListener(`click`, () => drawScreen(levelArtist(initialState)));
+// genreGameBack.addEventListener(`click`, () => drawScreen(welcomeScreenElement));
+// artistGameBack.addEventListener(`click`, () => drawScreen(welcomeScreenElement));
+successReplayButton.addEventListener(`click`, () => drawScreen(welcomeScreenElement));
+failTimeReplayButton.addEventListener(`click`, () => drawScreen(welcomeScreenElement));
+failTriesReplayButton.addEventListener(`click`, () => drawScreen(welcomeScreenElement));

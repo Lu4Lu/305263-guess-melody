@@ -6,7 +6,7 @@ const gameHeader = {
 };
 
 // header template
-const getHeader = (time) =>`
+const getHeader = (state) =>`
     <header class="game__header">
       <a class="game__back" href="#">
         <span class="visually-hidden">${gameHeader.logoBack}</span>
@@ -19,7 +19,7 @@ const getHeader = (time) =>`
       </svg>
 
       <div class="timer__value" xmlns="http://www.w3.org/1999/xhtml">      
-        <span class="timer__mins">${time}</span>
+        <span class="timer__mins">${state.time}</span>
         <span class="timer__dots">:</span>
         <span class="timer__secs">00</span>
       </div>

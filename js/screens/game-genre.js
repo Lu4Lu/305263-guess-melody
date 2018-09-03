@@ -38,13 +38,13 @@ export const levelGenre = (state) => {
   gameSubmitElement.disabled = true;
 
   // gameSubmitElement.addEventListener(`click`, () => {
-  //   changeScreen(gameArtist);
+  //   drawScreen(gameArtist);
   // });
 
   // const answerElements = Array.from(element.querySelectorAll(`input`));
 
   // const showArtist = () => {
-  //   changeScreen(gameArtist);
+  //   drawScreen(gameArtist);
   //   answerElements.forEach((item) => {
   //     item.checked = false;
   //   });

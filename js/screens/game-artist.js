@@ -1,5 +1,5 @@
-import {changeScreen, render, getRandomInt} from "../utils";
-import {questionsMockData} from "../data";
+import {drawScreen, render, getRandomInt} from "../utils";
+import {questionsMockData, initialState} from "../data";
 
 import resultSuccess from "./result-success";
 import failTime from "./fail-time";
@@ -20,7 +20,7 @@ export const levelArtist = (state) => {
   // game artist screen
   const template = `
   <section class="game game--artist">
-    ${getHeader(`05`)}
+    ${getHeader(`${initialState}`)}
   
     <section class="game__screen">
       <h2 class="game__title">${questionsMockData[1].questionTitle}</h2>
@@ -43,11 +43,11 @@ export const levelArtist = (state) => {
       let ifWin = getRandomInt(3);
 
       if (ifWin < 1) {
-        changeScreen(resultSuccess);
+        drawScreen(resultSuccess);
       } else if (ifWin > 2) {
-        changeScreen(failTime);
+        drawScreen(failTime);
       } else {
-        changeScreen(failTries);
+        drawScreen(failTries);
       }
     });
   });

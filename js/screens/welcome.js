@@ -16,7 +16,7 @@ const template = `
     <div class="welcome__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
     <button class="welcome__button"><span class="visually-hidden">${welcomeContent.button}</span></button>
     <h2 class="welcome__rules-title">${welcomeContent.content.title}</h2>
-    <p class="welcome__text">>${welcomeContent.content.text}</p>
+    <p class="welcome__text">${welcomeContent.content.text}</p>
     <ul class="welcome__rules-list">
     ${[...welcomeContent.content.rules].map((rule) => `<li class="rule">${rule}</li>`).join(``)}
     </ul>

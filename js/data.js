@@ -46,7 +46,7 @@ const tracks = [
 // levels
 export const questionsMockData = [
   {
-    questionTitle: `Выберите 1`,
+    questionTitle: `Выберите ${tracks[0].genre} треки`,
     tracks: {
       answer1: {
         audio: tracks[4].src,
@@ -69,7 +69,7 @@ export const questionsMockData = [
   },
 
   {
-    questionTitle: `Выберите 2`,
+    questionTitle: `Выберите ${tracks[1].genre} треки`,
     audio: tracks[2].src,
     answers: {
       answer1: {
@@ -90,7 +90,7 @@ export const questionsMockData = [
     type: `artist`
   },
   {
-    questionTitle: `Выберите 3`,
+    questionTitle: `Выберите ${tracks[2].genre} треки`,
     audio: tracks[2].src,
     answers: {
       answer1: {
@@ -111,7 +111,7 @@ export const questionsMockData = [
     type: `artist`
   },
   {
-    questionTitle: `Выберите 4`,
+    questionTitle: `Выберите ${tracks[3].genre} треки`,
     tracks: {
       answer1: {
         audio: tracks[4].src,
@@ -133,3 +133,28 @@ export const questionsMockData = [
     type: `genre`
   },
 ];
+
+export const Time = {
+  FAST: 30,
+  MAX: 300
+};
+
+export const MAX_QUESTIONS = 10;
+
+export const MAX_ERRORS = 3;
+
+
+const shuffleArray = (arr) => {
+  for (let i = arr.length; i > 0; i--) {
+    [arr[i - 1], arr[Math.floor(Math.random() * i)]] = [arr[Math.floor(Math.random() * i)], arr[i - 1]];
+  }
+  return arr;
+};
+
+export const initialState = Object.freeze({
+  time: Time.MAX,
+  lives: 3,
+  questions: shuffleArray(questionsMockData),
+  level: 0,
+  answersArr: []
+});
