@@ -8,13 +8,13 @@ import {replayElement as failTimeReplayButton} from './screens/fail-time';
 import {replayElement as failTriesReplayButton} from './screens/fail-tries';
 
 import {levelGenre} from "./screens/game-genre";
-import {levelArtist} from "./screens/game-artist";
+// import {levelArtist} from "./screens/game-artist";
 
 drawScreen(welcomeScreenElement);
 
 // playButtonElement.addEventListener(`click`, () => drawScreen(gameGenreScreenElement));
-// playButtonElement.addEventListener(`click`, () => drawScreen(levelGenre(initialState)));
-playButtonElement.addEventListener(`click`, () => drawScreen(levelArtist(initialState)));
+playButtonElement.addEventListener(`click`, () => drawScreen(levelGenre(initialState)));
+// playButtonElement.addEventListener(`click`, () => drawScreen(levelArtist(initialState)));
 // genreGameBack.addEventListener(`click`, () => drawScreen(welcomeScreenElement));
 // artistGameBack.addEventListener(`click`, () => drawScreen(welcomeScreenElement));
 successReplayButton.addEventListener(`click`, () => drawScreen(welcomeScreenElement));

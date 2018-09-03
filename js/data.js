@@ -162,6 +162,6 @@ export const initialState = {
   time: Time.MAX / 60,
   notes: 3,
   questions: questionsMockData,
-  level: 2,
+  level: 1,
   answers: []
 };

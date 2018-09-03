@@ -1,8 +1,11 @@
 import {render} from "../utils";
-import {questionsMockData} from "../data";
-
-// import gameArtist from "./game-artist";
+import {initialState, questionsMockData} from "../data";
 import getHeader from "../header";
+
+// import {changeScreen} from "./change-screen";
+
+// import {levelArtist} from "./game-artist";
+
 
 export const levelGenre = (state) => {
 
@@ -21,7 +24,7 @@ export const levelGenre = (state) => {
   // game genre screen
   const template = `
   <section class="game game--genre">
-    ${getHeader(`05`)}
+    ${getHeader(initialState)}
     <section class="game__screen">
       <h2 class="game__title">${questionsMockData[0].questionTitle}</h2>
       <form class="game__tracks"> 
@@ -34,17 +37,18 @@ export const levelGenre = (state) => {
 
   const element = render(template);
 
-  const gameSubmitElement = element.querySelector(`.game__submit`);
-  gameSubmitElement.disabled = true;
+  // const gameSubmitElement = element.querySelector(`.game__submit`);
+  // gameSubmitElement.disabled = true;
 
   // gameSubmitElement.addEventListener(`click`, () => {
-  //   drawScreen(gameArtist);
+  //   changeScreen();
   // });
 
+  //
   // const answerElements = Array.from(element.querySelectorAll(`input`));
-
+  //
   // const showArtist = () => {
-  //   drawScreen(gameArtist);
+  //   drawScreen(levelArtist);
   //   answerElements.forEach((item) => {
   //     item.checked = false;
   //   });

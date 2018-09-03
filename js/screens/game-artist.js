@@ -1,11 +1,12 @@
-import {drawScreen, render, getRandomInt} from "../utils";
+import {render} from "../utils";
 import {questionsMockData, initialState} from "../data";
 
-import resultSuccess from "./result-success";
-import failTime from "./fail-time";
-import failTries from "./fail-tries";
+// import resultSuccess from "./result-success";
+// import failTime from "./fail-time";
+// import failTries from "./fail-tries";
 
 import getHeader from "../header";
+import {changeScreen} from "./change-screen";
 
 export const levelArtist = (state) => {
 
@@ -20,8 +21,8 @@ export const levelArtist = (state) => {
   // game artist screen
   const template = `
   <section class="game game--artist">
-    ${getHeader(`${initialState}`)}
-  
+    ${getHeader(initialState)}
+
     <section class="game__screen">
       <h2 class="game__title">${questionsMockData[1].questionTitle}</h2>
       <div class="game__track">
@@ -38,19 +39,44 @@ export const levelArtist = (state) => {
 
   const element = render(template);
 
-  Array.from(element.querySelectorAll(`.artist__name`)).forEach((name) => {
-    name.addEventListener(`click`, () => {
-      let ifWin = getRandomInt(3);
+  const artistBtnElement = Array.from(element.querySelectorAll(`.artist__name`));
 
-      if (ifWin < 1) {
-        drawScreen(resultSuccess);
-      } else if (ifWin > 2) {
-        drawScreen(failTime);
-      } else {
-        drawScreen(failTries);
-      }
-    });
-  });
+  // artistBtnElement.forEach((name) => {
+  //   name.addEventListener(`click`, () => {
+  //     let newState;
+  //     if (name) {
+  //       newState = Object.assign({}, state, {level: state.level + 1});
+  //     } else {
+  //       newState = Object.assign({}, state, {level: state.level + 1});
+  //     }
+  //     changeScreen(newState);
+  //   });
+  // });
+
+  const answerElements = Array.from(element.querySelector(`.game__artist`).querySelectorAll(`.artist__input`));
+
+  const form = element.querySelector(`.game__artist`);
+
+  // const onAnswerButtonClick = (evt) => {
+  //   evt.preventDefault();
+  //   let newLives;
+  //   const answerNode = form.elements[`answer`];
+  //
+  //   if (answerNode && questions.answers[answerNode.value].correct) {
+  //     newLives = state.lives;
+  //     state.answersArr.push({correct: true, time: 12});
+  //   } else {
+  //     newLives = state.lives - 1;
+  //     state.answersArr.push({correct: false, time: 12});
+  //   }
+  //
+  //   const newGameState = Object.assign({}, state, {lives: newLives, level: state.level + 1, answersArr: state.answersArr});
+  //   changeScreen(newGameState);
+  // };
+  //
+  // answerButton.forEach((item) => {
+  //   item.addEventListener(`click`, answerButtonClickHandler);
+  // });
 
   return element;
 };
