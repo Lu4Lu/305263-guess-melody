@@ -9,9 +9,17 @@ import {changeScreen} from "./change-screen";
 
 export const levelArtist = (state) => {
 
-  const gameLevel = state.questions[state.level - 1];
+  const levelIndex = state.level;
+  console.log(`level index: `, levelIndex);
 
-  const artists = [...Object.entries(gameLevel.answers)].map(([key, artist]) => `
+  console.log(`левел артист`);
+  const gameLevel = state.questions[levelIndex];
+  console.log(`game level: `, gameLevel);
+
+  const levelAnswers = [...Object.entries(gameLevel.answers)];
+  console.log(`levelAnswers: `, levelAnswers);
+
+  const artists = levelAnswers.map(([key, artist]) => `
     <div class="artist">
       <input class="artist__input visually-hidden" type="radio" name="answer" value="${artist.isCorrect}" id="${key}">
       <label class="artist__name" for="${key}">
@@ -43,7 +51,8 @@ export const levelArtist = (state) => {
   const artistBtnElement = Array.from(element.querySelectorAll(`.artist__name`));
 
   artistBtnElement.forEach((name) => {
-    name.addEventListener(`click`, () => {
+    name.addEventListener(`click`, (evt) => {
+      evt.preventDefault();
       let newState;
       if (name) {
         newState = Object.assign({}, state, {level: state.level + 1});

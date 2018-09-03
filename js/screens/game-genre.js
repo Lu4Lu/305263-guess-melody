@@ -1,5 +1,6 @@
 import {render} from "../utils";
 import getHeader from "../header";
+import {changeScreen} from "./change-screen";
 
 // import {changeScreen} from "./change-screen";
 
@@ -46,22 +47,30 @@ export const levelGenre = (state) => {
 
   const element = render(template);
 
-  // const gameSubmitElement = element.querySelector(`.game__submit`);
+  const gameSubmitElement = element.querySelector(`.game__submit`);
   // gameSubmitElement.disabled = true;
 
-  // gameSubmitElement.addEventListener(`click`, () => {
-  //   changeScreen();
-  // });
+  gameSubmitElement.addEventListener(`click`, (evt) => {
+    evt.preventDefault();
+    console.log(`gameSubmitElement - click`);
+    let newState;
+    if (true) {
+      newState = Object.assign({}, state, {level: state.level + 1});
+    } else {
+      newState = Object.assign({}, state, {level: state.level + 1});
+    }
+    changeScreen(newState);
+  });
 
-  //
-  // const answerElements = Array.from(element.querySelectorAll(`input`));
-  //
+  const answerElements = Array.from(element.querySelectorAll(`input`));
+
   // const showArtist = () => {
   //   drawScreen(levelArtist);
   //   answerElements.forEach((item) => {
   //     item.checked = false;
   //   });
   // };
+
   //
   // answerElements.forEach((item) => {
   //   item.addEventListener(`change`, () => {
