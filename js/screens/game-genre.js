@@ -50,19 +50,55 @@ export const levelGenre = (state) => {
   const gameSubmitElement = element.querySelector(`.game__submit`);
   // gameSubmitElement.disabled = true;
 
+  const form = element.querySelector(`.game__tracks`);
+
+  const currentAnswers = Array.from(form.querySelectorAll(`input`));
+
+  console.log(`currentAnswers: `, currentAnswers);
+
+
   gameSubmitElement.addEventListener(`click`, (evt) => {
     evt.preventDefault();
     console.log(`gameSubmitElement - click`);
+
+    // multiple
+
+
     let newState;
-    if (true) {
-      newState = Object.assign({}, state, {level: state.level + 1});
+    // const isCorrect = false;
+
+    const checkedAnswers = currentAnswers.filter((item) => item.checked).map((it) => it.id);
+    console.log(`checkedAnswers: `, checkedAnswers);
+
+    const rightAnswers = Object.keys(gameLevel.tracks).filter((it)=> gameLevel.tracks[it].isCorrect);
+    console.log(`rightAnswers: `, rightAnswers);
+
+
+    const isCorrect = rightAnswers.every((key) =>
+      gameLevel.tracks[key].isCorrect === checkedAnswers.includes(key));
+
+    // const correct = Object.keys(questions.answers).every( (key) =>
+    //   questions.answers[key].correct === checkedAnswer.includes(key));
+
+    // const isCorrect = rightAnswers.every((key) =>
+    //   rightAnswers[key] === checkedAnswers[key]
+    // );
+
+    // forEach()
+    console.log(`isCorrect: `, isCorrect);
+
+    // const answer = {correct: isCorrect, time: 20};
+    if (isCorrect === false) {
+      newState = Object.assign({}, state, {level: state.level + 1, notes: state.notes - 1});
     } else {
       newState = Object.assign({}, state, {level: state.level + 1});
     }
+    newState.answers.push(currentAnswers);
+    console.log(`answer: `, currentAnswers)
     changeScreen(newState);
   });
 
-  const answerElements = Array.from(element.querySelectorAll(`input`));
+  // const answerElements = Array.from(element.querySelectorAll(`input`));
 
   // const showArtist = () => {
   //   drawScreen(levelArtist);

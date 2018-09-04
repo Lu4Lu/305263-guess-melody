@@ -24,9 +24,9 @@ const getHeader = (state) =>`
         <span class="timer__secs">00</span>
       </div>
 
-      <div class="game__mistakes">   
-      ${[...gameHeader.notes].map((note) => `<div class="${note}"></div>`).join(``)}</div>
-    </header>
+      <div class="game__mistakes">  
+       <div class="game__mistakes">${new Array(state.notes).fill(`<div class="correct"></div>`).join(``)}</div>
+      </header>
 `;
 
 export default getHeader;

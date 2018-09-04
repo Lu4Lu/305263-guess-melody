@@ -50,15 +50,20 @@ export const levelArtist = (state) => {
 
   const artistBtnElement = Array.from(element.querySelectorAll(`.artist__name`));
 
-  artistBtnElement.forEach((name) => {
-    name.addEventListener(`click`, (evt) => {
+  // counting the answers and changing current state
+  artistBtnElement.forEach((artist) => {
+    artist.addEventListener(`click`, (evt) => {
       evt.preventDefault();
       let newState;
-      if (name) {
-        newState = Object.assign({}, state, {level: state.level + 1});
+      const isCorrect = false;
+      const answer = {correct: isCorrect, time: 20};
+      if (isCorrect === false) {
+        newState = Object.assign({}, state, {level: state.level + 1, notes: state.notes - 1});
       } else {
         newState = Object.assign({}, state, {level: state.level + 1});
       }
+      newState.answers.push(answer);
+      console.log(`answer: `, answer)
       changeScreen(newState);
     });
   });

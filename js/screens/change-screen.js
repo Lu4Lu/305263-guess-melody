@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import {QuestionType} from '../data';
 import {drawScreen} from "../utils";
 import {levelGenre} from './game-genre';
@@ -7,7 +5,9 @@ import {levelArtist} from './game-artist';
 
 
 export const changeScreen = (state) => {
-  console.log(state);
+  console.log(`______________________________`);
+
+  console.log(`state: `, state);
 
   const questions = state.questions[state.level]
   if (questions.type === QuestionType.ARTIST) {
@@ -23,6 +23,3 @@ export const changeScreen = (state) => {
   //   drawScreen()
   // }
 };
-
-
-

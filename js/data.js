@@ -152,17 +152,17 @@ export const MAX_QUESTIONS = 10;
 export const MAX_ERRORS = 3;
 
 
-// const shuffleArray = (arr) => {
-//   for (let i = arr.length; i > 0; i--) {
-//     [arr[i - 1], arr[getRandomInt(i)]] = [arr[getRandomInt(i)], arr[i - 1]];
-//   }
-//   return arr;
-// };
+const shuffleArray = (arr) => {
+  for (let i = arr.length; i > 0; i--) {
+    [arr[i - 1], arr[getRandomInt(i)]] = [arr[getRandomInt(i)], arr[i - 1]];
+  }
+  return arr;
+};
 
 export const initialState = {
   time: Time.MAX / 60,
   notes: 3,
-  questions: questionsMockData,
+  questions: shuffleArray(questionsMockData),
   level: 0,
   answers: []
 };
