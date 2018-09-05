@@ -81,28 +81,6 @@ export const levelArtist = (state) => {
     });
   });
 
-
-  // const onAnswerButtonClick = (evt) => {
-  //   evt.preventDefault();
-  //   let newLives;
-  //   const answerNode = form.elements[`answer`];
-  //
-  //   if (answerNode && questions.answers[answerNode.value].correct) {
-  //     newLives = state.lives;
-  //     state.answersArr.push({correct: true, time: 12});
-  //   } else {
-  //     newLives = state.lives - 1;
-  //     state.answersArr.push({correct: false, time: 12});
-  //   }
-  //
-  //   const newGameState = Object.assign({}, state, {lives: newLives, level: state.level + 1, answersArr: state.answersArr});
-  //   changeScreen(newGameState);
-  // };
-  //
-  // answerButton.forEach((item) => {
-  //   item.addEventListener(`click`, answerButtonClickHandler);
-  // });
-
   return element;
 };
 
