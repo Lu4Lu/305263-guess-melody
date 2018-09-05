@@ -109,7 +109,7 @@ export const questionsMockData = [
       answer2: {
         avatar: tracks[1].image,
         name: tracks[1].name,
-        isCorrect: true
+        isCorrect: false
       },
       answer3: {
         avatar: tracks[2].image,

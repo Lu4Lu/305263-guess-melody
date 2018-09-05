@@ -50,27 +50,37 @@ export const levelArtist = (state) => {
 
   const artistBtnElement = Array.from(element.querySelectorAll(`.artist__name`));
 
+  const currentAnswers = Array.from(element.querySelector(`.game__artist`).querySelectorAll(`.artist__input`));
+  console.log(`currentAnswers: `, currentAnswers);
+  // const form = element.querySelector(`.game__artist`);
+
   // counting the answers and changing current state
   artistBtnElement.forEach((artist) => {
     artist.addEventListener(`click`, (evt) => {
       evt.preventDefault();
       let newState;
+
+      // check which answer is checked
+      const checkedAnswer = currentAnswers.filter((item) => item.checked).map((it) => it.id);;
+      console.log(`checkedAnswer: `, checkedAnswer);
+
+      const rightAnswer = Object.keys(gameLevel.answers).filter((it)=> gameLevel.answers[it].isCorrect);
+      console.log(`rightAnswer: `, rightAnswer);
+
       const isCorrect = false;
       const answer = {correct: isCorrect, time: 20};
+
       if (isCorrect === false) {
         newState = Object.assign({}, state, {level: state.level + 1, notes: state.notes - 1});
       } else {
         newState = Object.assign({}, state, {level: state.level + 1});
       }
       newState.answers.push(answer);
-      console.log(`answer: `, answer)
+      console.log(`answer: `, answer);
       changeScreen(newState);
     });
   });
 
-  const answerElements = Array.from(element.querySelector(`.game__artist`).querySelectorAll(`.artist__input`));
-
-  const form = element.querySelector(`.game__artist`);
 
   // const onAnswerButtonClick = (evt) => {
   //   evt.preventDefault();
