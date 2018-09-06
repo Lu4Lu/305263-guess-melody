@@ -73,19 +73,14 @@ export const levelGenre = (state) => {
     const rightAnswers = Object.keys(gameLevel.tracks).filter((it)=> gameLevel.tracks[it].isCorrect);
     console.log(`rightAnswers: `, rightAnswers);
 
-
-    const isCorrect = rightAnswers.every((key) =>
-      gameLevel.tracks[key].isCorrect === checkedAnswers.includes(key));
-
-    // const correct = Object.keys(questions.answers).every( (key) =>
-    //   questions.answers[key].correct === checkedAnswer.includes(key));
-
-    // const isCorrect = rightAnswers.every((key) =>
-    //   rightAnswers[key] === checkedAnswers[key]
-    // );
-
-    // forEach()
-    console.log(`isCorrect: `, isCorrect);
+    let isCorrect = false;
+    if (rightAnswers.length === checkedAnswers) {
+      isCorrect = rightAnswers.every((key) => gameLevel.tracks[key].isCorrect === checkedAnswers.includes(key));
+      console.log(`isCorrect: `, isCorrect);
+    } else {
+      isCorrect = false;
+      console.log(`isCorrect: `, isCorrect);
+    }
 
     // const answer = {correct: isCorrect, time: 20};
     if (isCorrect === false) {
