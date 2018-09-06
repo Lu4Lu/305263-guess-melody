@@ -10,14 +10,14 @@ import {changeScreen} from "./change-screen";
 export const levelArtist = (state) => {
 
   const levelIndex = state.level;
-  console.log(`level index: `, levelIndex);
+  // console.log(`level index: `, levelIndex);
 
-  console.log(`левел артист`);
+  // console.log(`левел артист`);
   const gameLevel = state.questions[levelIndex];
-  console.log(`game level: `, gameLevel);
+  // console.log(`game level: `, gameLevel);
 
   const levelAnswers = [...Object.entries(gameLevel.answers)];
-  console.log(`levelAnswers: `, levelAnswers);
+  // console.log(`levelAnswers: `, levelAnswers);
 
   const artists = levelAnswers.map(([key, artist]) => `
     <div class="artist">
@@ -51,7 +51,7 @@ export const levelArtist = (state) => {
   const artistBtnElement = Array.from(element.querySelectorAll(`.artist__input`));
 
   const currentAnswers = Array.from(element.querySelector(`.game__artist`).querySelectorAll(`.artist__input`));
-  console.log(`currentAnswers: `, currentAnswers);
+  // console.log(`currentAnswers: `, currentAnswers);
   // const form = element.querySelector(`.game__artist`);
 
   // counting the answers and changing current state
@@ -62,19 +62,19 @@ export const levelArtist = (state) => {
 
       // check which answer is checked
       const checkedAnswer = currentAnswers.filter((item) => item.checked).map((it) => it.id).toString();
-      console.log(`checkedAnswer: `, checkedAnswer);
+      // console.log(`checkedAnswer: `, checkedAnswer);
 
       const rightAnswer = Object.keys(gameLevel.answers).filter((it)=> gameLevel.answers[it].isCorrect).toString();
-      console.log(`rightAnswer: `, rightAnswer);
+      // console.log(`rightAnswer: `, rightAnswer);
 
       let isCorrect = false;
       if (rightAnswer === checkedAnswer) {
         isCorrect = true;
-        console.log(`isCorrect: `, isCorrect);
+        // console.log(`isCorrect: `, isCorrect);
       }
 
       const answer = {correct: isCorrect, time: 20};
-      console.log(`answer: `, answer);
+      // console.log(`answer: `, answer);
 
       if (isCorrect === false) {
         newState = Object.assign({}, state, {level: state.level + 1, notes: state.notes - 1});

@@ -147,7 +147,7 @@ export const Time = {
   MAX: 300
 };
 
-export const MAX_QUESTIONS = 10;
+export const MAX_QUESTIONS = questionsMockData.length;
 
 export const MAX_ERRORS = 3;
 

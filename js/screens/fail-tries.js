@@ -1,4 +1,4 @@
-import {render} from '../utils.js';
+import {render} from '../utils';
 
 // fail tries screen
 const template = `
