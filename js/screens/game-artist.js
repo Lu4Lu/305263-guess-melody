@@ -48,7 +48,7 @@ export const levelArtist = (state) => {
 
   const element = render(template);
 
-  const artistBtnElement = Array.from(element.querySelectorAll(`.artist__name`));
+  const artistBtnElement = Array.from(element.querySelectorAll(`.artist__input`));
 
   const currentAnswers = Array.from(element.querySelector(`.game__artist`).querySelectorAll(`.artist__input`));
   console.log(`currentAnswers: `, currentAnswers);
@@ -61,14 +61,20 @@ export const levelArtist = (state) => {
       let newState;
 
       // check which answer is checked
-      const checkedAnswer = currentAnswers.filter((item) => item.checked).map((it) => it.id);;
+      const checkedAnswer = currentAnswers.filter((item) => item.checked).map((it) => it.id).toString();
       console.log(`checkedAnswer: `, checkedAnswer);
 
-      const rightAnswer = Object.keys(gameLevel.answers).filter((it)=> gameLevel.answers[it].isCorrect);
+      const rightAnswer = Object.keys(gameLevel.answers).filter((it)=> gameLevel.answers[it].isCorrect).toString();
       console.log(`rightAnswer: `, rightAnswer);
 
-      const isCorrect = false;
+      let isCorrect = false;
+      if (rightAnswer === checkedAnswer) {
+        isCorrect = true;
+        console.log(`isCorrect: `, isCorrect);
+      }
+
       const answer = {correct: isCorrect, time: 20};
+      console.log(`answer: `, answer);
 
       if (isCorrect === false) {
         newState = Object.assign({}, state, {level: state.level + 1, notes: state.notes - 1});
@@ -76,7 +82,7 @@ export const levelArtist = (state) => {
         newState = Object.assign({}, state, {level: state.level + 1});
       }
       newState.answers.push(answer);
-      console.log(`answer: `, answer);
+
       changeScreen(newState);
     });
   });
@@ -84,7 +90,3 @@ export const levelArtist = (state) => {
   return element;
 };
 
-//
-// export const gameBackElement = element.querySelector(`.game__back`);
-//
-// export default element;

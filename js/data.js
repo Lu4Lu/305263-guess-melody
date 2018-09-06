@@ -82,7 +82,7 @@ export const questionsMockData = [
       answer1: {
         avatar: tracks[0].image,
         name: tracks[0].name,
-        isCorrect: true
+        isCorrect: false
       },
       answer2: {
         avatar: tracks[1].image,
@@ -92,7 +92,7 @@ export const questionsMockData = [
       answer3: {
         avatar: tracks[2].image,
         name: tracks[2].name,
-        isCorrect: false},
+        isCorrect: true},
     },
     type: QuestionType.ARTIST
   },
