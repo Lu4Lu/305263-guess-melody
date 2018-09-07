@@ -118,28 +118,7 @@ export const questionsMockData = [
     },
     type: QuestionType.ARTIST
   },
-  {
-    questionTitle: `Выберите ${tracks[3].genre} треки`,
-    tracks: {
-      answer1: {
-        audio: tracks[4].src,
-        isCorrect: true
-      },
-      answer2: {
-        audio: tracks[2].src,
-        isCorrect: true
-      },
-      answer3: {
-        audio: tracks[1].src,
-        isCorrect: false
-      },
-      answer4: {
-        audio: tracks[0].src,
-        isCorrect: true
-      }
-    },
-    type: QuestionType.GENRE
-  },
+
 ];
 
 export const Time = {

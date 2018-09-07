@@ -1,11 +1,8 @@
 import {render} from "../utils";
-
-// import resultSuccess from "./result-success";
-// import failTime from "./fail-time";
-// import failTries from "./fail-tries";
-
 import getHeader from "../header";
 import {changeScreen} from "./change-screen";
+// import {showResults} from "../data/showResults";
+// import {calculatePoints} from "../data/points";
 
 export const levelArtist = (state) => {
 
@@ -73,7 +70,7 @@ export const levelArtist = (state) => {
         // console.log(`isCorrect: `, isCorrect);
       }
 
-      const answer = {correct: isCorrect, time: 20};
+      const answer = {correct: isCorrect, time: 10, mistakes: 3 - state.notes};
       // console.log(`answer: `, answer);
 
       if (isCorrect === false) {
@@ -81,9 +78,12 @@ export const levelArtist = (state) => {
       } else {
         newState = Object.assign({}, state, {level: state.level + 1});
       }
-      newState.answers.push(answer);
+      state.answers.push(answer);
+      console.log(newState.answers);
 
       changeScreen(newState);
+      // showResults(newState.answers, newState);
+
     });
   });
 

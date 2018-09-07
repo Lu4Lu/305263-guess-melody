@@ -1,6 +1,8 @@
 import {render} from "../utils";
 import getHeader from "../header";
 import {changeScreen} from "./change-screen";
+// import {showResults} from "../data/showResults";
+import {calculatePoints} from "../data/points";
 
 export const levelGenre = (state) => {
 
@@ -69,7 +71,7 @@ export const levelGenre = (state) => {
       // console.log(`isCorrect: `, isCorrect);
     }
 
-    const answer = {correct: isCorrect, time: 20};
+    const answer = {correct: isCorrect, time: 30, mistakes: 3 - state.notes};
     // console.log(`answer: `, currentAnswers);
 
     if (isCorrect === false) {
@@ -77,9 +79,14 @@ export const levelGenre = (state) => {
     } else {
       newState = Object.assign({}, state, {level: state.level + 1});
     }
-    newState.answers.push(currentAnswers);
+    newState.answers.push(answer);
 
     changeScreen(newState);
+    // console.log(newState);
+    // showResults(newState.answers, newState);
+    // calculatePoints
+    // const points = calculatePoints(newState.answers, newState.notes);
+    // console.log(points);
   });
 
   return element;
