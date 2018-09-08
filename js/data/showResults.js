@@ -1,4 +1,4 @@
-import {getWinScreen} from "../screens/result-success";
+// import {getWinScreen} from "../screens/result-success";
 
 
 export const showResults = (statistics, gameResult) => {
@@ -21,7 +21,7 @@ export const showResults = (statistics, gameResult) => {
   const place = points.indexOf(playerPoints) + 1;
   const rate = (players - place) / players * 100;
 
-
+  // getWinScreen(newState.answers, newState);
   // Если игрок выиграл, то его результат должен быть выведен в виде фразы:
   // Вы заняли i место из t игроков.
   // Это лучше, чем у n% игроков,
