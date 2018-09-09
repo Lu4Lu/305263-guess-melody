@@ -4,6 +4,17 @@ import {changeScreen} from "./change-screen";
 // import {showResults} from "../data/showResults";
 import {calculatePoints} from "../data/points";
 
+export const isCorrectCheck = (array, genre)=>{
+  // debugger;
+  return array.every((item) => {
+    if (item.checked) {
+      return item.value === genre;
+    } else {
+      return item.value !== genre;
+    }
+  });
+};
+
 export const levelGenre = (state) => {
 
   const levelIndex = state.level;
@@ -22,7 +33,7 @@ export const levelGenre = (state) => {
         <audio src="${track.audio}"></audio>
       </div>
       <div class="game__answer">
-        <input class="game__input visually-hidden" type="checkbox" name="answer" value="${track.isCorrect}" id="${key}">
+        <input class="game__input visually-hidden" type="checkbox" name="answer" value="${track.genre}" id="${key}">
         <label class="game__check" for="${key}">Отметить</label>
       </div>
     </div>`).join(``);
@@ -44,35 +55,22 @@ export const levelGenre = (state) => {
   const element = render(template);
 
   const gameSubmitElement = element.querySelector(`.game__submit`);
-  // gameSubmitElement.disabled = true;
 
   const form = element.querySelector(`.game__tracks`);
-
-  const currentAnswers = Array.from(form.querySelectorAll(`input`));
-  // console.log(`currentAnswers: `, currentAnswers);
 
   gameSubmitElement.addEventListener(`click`, (evt) => {
     evt.preventDefault();
 
+    console.log(`gameLevel:`, gameLevel);
+
     let newState;
+    const correctGenre = gameLevel.genre;
+    const currentAnswers = Array.from(form.querySelectorAll(`input`));
 
-    const checkedAnswers = currentAnswers.filter((item) => item.checked).map((it) => it.id);
-    // console.log(`checkedAnswers: `, checkedAnswers);
+    let isCorrect = isCorrectCheck(currentAnswers, correctGenre);
+    console.log(`isCorrect:`, isCorrect);
 
-    const rightAnswers = Object.keys(gameLevel.tracks).filter((it)=> gameLevel.tracks[it].isCorrect);
-    // console.log(`rightAnswers: `, rightAnswers);
-
-    let isCorrect;
-    if (rightAnswers.length === checkedAnswers.length) {
-      isCorrect = rightAnswers.every((key) => gameLevel.tracks[key].isCorrect === checkedAnswers.includes(key));
-      // console.log(`isCorrect: `, isCorrect);
-    } else {
-      isCorrect = false;
-      // console.log(`isCorrect: `, isCorrect);
-    }
-
-    const answer = {correct: isCorrect, time: 30, mistakes: 3 - state.notes};
-    // console.log(`answer: `, currentAnswers);
+    const answer = {correct: isCorrect, time: 30};
 
     if (isCorrect === false) {
       newState = Object.assign({}, state, {level: state.level + 1, notes: state.notes - 1});
@@ -82,11 +80,6 @@ export const levelGenre = (state) => {
     newState.answers.push(answer);
 
     changeScreen(newState);
-    // console.log(newState);
-    // showResults(newState.answers, newState);
-    // calculatePoints
-    // const points = calculatePoints(newState.answers, newState.notes);
-    // console.log(points);
   });
 
   return element;
