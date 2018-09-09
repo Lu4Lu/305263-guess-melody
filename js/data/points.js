@@ -18,9 +18,10 @@ export const calculatePoints = (answers, notes) => {
 
   let points = 0;
 
-  if (answers.length < MAX_QUESTIONS) {
-    return -1;
-  }
+  // console.log(`answers.length`, answers.length);
+  // if (answers.length < MAX_QUESTIONS) {
+  //   return -1;
+  // }
 
   if (notes < 0) {
     throw new Error(`Notes amount should not be negative.`);
@@ -40,5 +41,6 @@ export const calculatePoints = (answers, notes) => {
     }
   });
 
+  console.log(points);
   return points;
 };

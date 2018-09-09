@@ -1,119 +1,94 @@
-import {changeScreen, render} from "../utils.js";
+import {render} from "../utils";
+import getHeader from "../header";
+import {changeScreen} from "./change-screen";
+// import {showResults} from "../data/showResults";
+import {calculatePoints} from "../data/points";
 
-import gameArtist from "./game-artist.js";
+export const isCorrectCheck = (array, genre)=>{
+  // debugger;
+  return array.every((item) => {
+    if (item.checked) {
+      return item.value === genre;
+    } else {
+      return item.value !== genre;
+    }
+  });
+};
 
-// game genre screen
-const template = `
+export const levelGenre = (state) => {
+
+  const levelIndex = state.level;
+  // console.log(`level index: `, levelIndex);
+
+  const gameLevel = state.questions[levelIndex];
+  // console.log(`game level: `, gameLevel);
+
+  const levelTracks = [...Object.entries(gameLevel.tracks)];
+  // console.log(`levelTracks: `, levelTracks);
+
+  const tracks = levelTracks.map(([key, track]) => `
+      <div class="track">
+        <button class="track__button track__button--play" type="button"></button>
+        <div class="track__status">
+        <audio src="${track.audio}"></audio>
+      </div>
+      <div class="game__answer">
+        <input class="game__input visually-hidden" type="checkbox" name="answer" value="${track.genre}" id="${key}">
+        <label class="game__check" for="${key}">Отметить</label>
+      </div>
+    </div>`).join(``);
+
+  // game genre screen
+  const template = `
   <section class="game game--genre">
-    <header class="game__header">
-      <a class="game__back" href="#">
-        <span class="visually-hidden">Сыграть ещё раз</span>
-        <img class="game__logo" src="img/melody-logo-ginger.png" alt="Угадай мелодию">
-      </a>
-
-      <svg xmlns="http://www.w3.org/2000/svg" class="timer" viewBox="0 0 780 780">
-        <circle class="timer__line" cx="390" cy="390" r="370"
-                style="filter: url(#blur); transform: rotate(-90deg) scaleY(-1); transform-origin: center"/>
-      </svg>
-
-      <div class="timer__value" xmlns="http://www.w3.org/1999/xhtml">
-        <span class="timer__mins">05</span>
-        <span class="timer__dots">:</span>
-        <span class="timer__secs">00</span>
-      </div>
-
-      <div class="game__mistakes">
-        <div class="wrong"></div>
-        <div class="wrong"></div>
-        <div class="wrong"></div>
-      </div>
-    </header>
-
+    ${getHeader(state)}
     <section class="game__screen">
-      <h2 class="game__title">Выберите инди-рок треки</h2>
-      <form class="game__tracks">
-        <div class="track">
-          <button class="track__button track__button--play" type="button"></button>
-          <div class="track__status">
-            <audio></audio>
-          </div>
-          <div class="game__answer">
-            <input class="game__input visually-hidden" type="checkbox" name="answer" value="answer-1" id="answer-1">
-            <label class="game__check" for="answer-1">Отметить</label>
-          </div>
-        </div>
-
-        <div class="track">
-          <button class="track__button track__button--play" type="button"></button>
-          <div class="track__status">
-            <audio></audio>
-          </div>
-          <div class="game__answer">
-            <input class="game__input visually-hidden" type="checkbox" name="answer" value="answer-1" id="answer-2">
-            <label class="game__check" for="answer-2">Отметить</label>
-          </div>
-        </div>
-
-        <div class="track">
-          <button class="track__button track__button--pause" type="button"></button>
-          <div class="track__status">
-            <audio></audio>
-          </div>
-          <div class="game__answer">
-            <input class="game__input visually-hidden" type="checkbox" name="answer" value="answer-1" id="answer-3">
-            <label class="game__check" for="answer-3">Отметить</label>
-          </div>
-        </div>
-
-        <div class="track">
-          <button class="track__button track__button--play" type="button"></button>
-          <div class="track__status">
-            <audio></audio>
-          </div>
-          <div class="game__answer">
-            <input class="game__input visually-hidden" type="checkbox" name="answer" value="answer-1" id="answer-4">
-            <label class="game__check" for="answer-4">Отметить</label>
-          </div>
-        </div>
-
+      <h2 class="game__title">${gameLevel.questionTitle}</h2>
+      <form class="game__tracks"> 
+        ${tracks}
         <button class="game__submit button" type="submit">Ответить</button>
       </form>
     </section>
   </section>
   `;
 
-const element = render(template);
-export const gameGenreScreenElement = element;
+  const element = render(template);
 
-const gameSubmitElement = element.querySelector(`.game__submit`);
-gameSubmitElement.disabled = true;
+  const gameSubmitElement = element.querySelector(`.game__submit`);
 
-gameSubmitElement.addEventListener(`click`, () => {
-  changeScreen(gameArtist);
-});
+  const form = element.querySelector(`.game__tracks`);
 
-const answerElements = Array.from(element.querySelectorAll(`input`));
+  gameSubmitElement.addEventListener(`click`, (evt) => {
+    evt.preventDefault();
 
-const showArtist = () => {
-  changeScreen(gameArtist);
-  answerElements.forEach((item) => {
-    item.checked = false;
+    console.log(`gameLevel:`, gameLevel);
+
+    let newState;
+    const correctGenre = gameLevel.genre;
+    const currentAnswers = Array.from(form.querySelectorAll(`input`));
+
+    let isCorrect = isCorrectCheck(currentAnswers, correctGenre);
+    console.log(`isCorrect:`, isCorrect);
+
+    const answer = {correct: isCorrect, time: 30};
+
+    if (isCorrect === false) {
+      newState = Object.assign({}, state, {level: state.level + 1, notes: state.notes - 1});
+    } else {
+      newState = Object.assign({}, state, {level: state.level + 1});
+    }
+    newState.answers.push(answer);
+
+    changeScreen(newState);
   });
+
+  return element;
+
 };
 
-answerElements.forEach((item) => {
-  item.addEventListener(`change`, () => {
-    if (answerElements.some((answer) => answer.checked)) {
-      gameSubmitElement.disabled = false;
-    } else {
-      gameSubmitElement.disabled = true;
-    }
-  });
-});
-
-gameSubmitElement.addEventListener(`click`, showArtist);
-
-export const gameBackElement = element.querySelector(`.game__back`);
-
-export default element;
+// export const gameGenreScreenElement = element;
+//
+// export const gameBackElement = element.querySelector(`.game__back`);
+//
+// export default element;
 

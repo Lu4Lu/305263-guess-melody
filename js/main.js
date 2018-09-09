@@ -1,16 +1,27 @@
-import {changeScreen} from './utils.js';
-import {welcomeScreenElement, playButtonElement} from './screens/welcome.js';
-import {gameGenreScreenElement, gameBackElement as genreGameBack} from './screens/game-genre.js';
-import {gameBackElement as artistGameBack} from './screens/game-artist.js';
-import {replayElement as successReplayButton} from './screens/result-success.js';
-import {replayElement as failTimeReplayButton} from './screens/fail-time.js';
-import {replayElement as failTriesReplayButton} from './screens/fail-tries.js';
+import {drawScreen} from './utils';
+import {initialState} from "./data";
+import {welcomeScreenElement, playButtonElement} from './screens/welcome';
 
-changeScreen(welcomeScreenElement);
+import {changeScreen} from "./screens/change-screen";
 
-playButtonElement.addEventListener(`click`, () => changeScreen(gameGenreScreenElement));
-genreGameBack.addEventListener(`click`, () => changeScreen(welcomeScreenElement));
-artistGameBack.addEventListener(`click`, () => changeScreen(welcomeScreenElement));
-successReplayButton.addEventListener(`click`, () => changeScreen(welcomeScreenElement));
-failTimeReplayButton.addEventListener(`click`, () => changeScreen(welcomeScreenElement));
-failTriesReplayButton.addEventListener(`click`, () => changeScreen(welcomeScreenElement));
+drawScreen(welcomeScreenElement);
+
+playButtonElement.addEventListener(`click`, () => {
+  const newState = Object.assign({}, initialState);
+  changeScreen(newState);
+});
+
+
+// собрать массив ответов
+  // менять кол-во нот и пушить в answers
+  // менять ноты в хедере
+  // правильно-неправильно ответил в артист
+  // ... в жанр
+
+// менять статистику от ответов
+ // применить в results
+
+// сделать скрины с результатами и фейлами
+  // вывести фейл попыток
+  // добавить в него результаты
+

@@ -1,7 +1,6 @@
+// import {getWinScreen} from "../screens/result-success";
 
-// Функция на вход принимает массив результатов игр других игроков;
-// Функция на вход принимает объект результата с кол-вом набранных баллов,
-// кол-вом оставшихся нот и кол-вом оставшегося времени;
+
 export const showResults = (statistics, gameResult) => {
   // Если игрок проиграл и у него закончилось время, то должна быть выведена фраза: «Время вышло! Вы не успели отгадать все мелодии»;
   if (gameResult.time <= 0) {
@@ -22,10 +21,12 @@ export const showResults = (statistics, gameResult) => {
   const place = points.indexOf(playerPoints) + 1;
   const rate = (players - place) / players * 100;
 
+  // getWinScreen(newState.answers, newState);
   // Если игрок выиграл, то его результат должен быть выведен в виде фразы:
   // Вы заняли i место из t игроков.
   // Это лучше, чем у n% игроков,
   // где i — место, которое занял пользователь, t — общее кол-во игроков, n — процент успеха игрока;
+  console.log(`Вы заняли ${place} место из ${players} игроков. Это лучше, чем у ${rate}% игроков.`);
   return `Вы заняли ${place} место из ${players} игроков. Это лучше, чем у ${rate}% игроков.`;
 };
 

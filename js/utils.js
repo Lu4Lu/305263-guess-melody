@@ -6,7 +6,7 @@ export const render = (template) => {
   return wrapper;
 };
 
-export const changeScreen = (element) => {
+export const drawScreen = (element) => {
   mainElement.innerHTML = ``;
   mainElement.appendChild(element);
 };
@@ -14,3 +14,5 @@ export const changeScreen = (element) => {
 export const getRandomInt = (max) => {
   return Math.floor(Math.random() * Math.floor(max));
 };
+
+// export const getFragmentFromString = (str) => new DOMParser().parseFromString(str, `text/html`).body.firstChild;
