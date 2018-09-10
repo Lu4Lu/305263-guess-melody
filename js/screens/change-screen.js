@@ -1,9 +1,9 @@
 import {QuestionType, MAX_QUESTIONS} from '../data';
 import {drawScreen} from "../utils";
-import {levelGenre} from './game-genre';
-import {levelArtist} from './game-artist';
-import failTries from './fail-tries';
-import {getWinScreen} from './result-success';
+import {levelGenre} from './genre-screen';
+import {levelArtist} from './artist-screen';
+import failTries from './failtries-screen';
+import {getWinScreen} from './success-screen';
 // import {calculatePoints} from "../data/points";
 
 export const changeScreen = (state) => {

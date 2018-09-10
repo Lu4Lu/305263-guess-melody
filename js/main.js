@@ -1,6 +1,6 @@
 import {drawScreen} from './utils';
 import {initialState} from "./data";
-import {welcomeScreenElement, playButtonElement} from './screens/welcome';
+import {welcomeScreenElement, playButtonElement} from './screens/welcome-screen';
 
 import {changeScreen} from "./screens/change-screen";
 
