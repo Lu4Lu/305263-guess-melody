@@ -1,49 +1,54 @@
-import {drawScreen} from "../utils";
+// import {drawScreen, render} from "../utils";
+// import getHeader from "../header";
+// import {changeScreen} from "./change-screen";
+// import WelcomeView from "../views/welcome-view";
+// import {initialState} from "../data/play-data";
 import GenreView from "../views/genre-view";
-import {initialState} from "../data/play-data";
-
-export const isCorrectCheck = (array, genre)=>{
-  // debugger;
-  return array.every((item) => {
-    if (item.checked) {
-      return item.value === genre;
-    } else {
-      return item.value !== genre;
-    }
-  });
-};
 
 export default (state) => {
 
-  // const questions = state.questions[0];
+  const levelIndex = state.level;
+  // console.log(`level index: `, levelIndex);
 
-  const screen = new GenreView(state);
+  const gameLevel = state.questions[levelIndex];
+  // console.log(`game level: `, gameLevel);
 
-  console.log(`state: `, state);
+  const levelTracks = [...Object.entries(gameLevel.tracks)];
+  // console.log(`levelTracks: `, levelTracks);
 
-  // screen.addEventListener(`click`, (evt) => {
-  //   evt.preventDefault();
-  //
-  //   // console.log(`gameLevel:`, gameLevel);
-  //
-  //   let newState;
-  //   const correctGenre = level.genre;
-  //   const currentAnswers = Array.from(form.querySelectorAll(`input`));
-  //
-  //   let isCorrect = isCorrectCheck(currentAnswers, correctGenre);
-  //   // console.log(`isCorrect:`, isCorrect);
-  //
-  //   const answer = {correct: isCorrect, time: 30};
-  //
-  //   if (isCorrect === false) {
-  //     newState = Object.assign({}, state, {level: state.level + 1, notes: state.notes - 1});
-  //   } else {
-  //     newState = Object.assign({}, state, {level: state.level + 1});
-  //   }
-  //   newState.answers.push(answer);
-  //
-  //   changeScreen(newState);
-  // });
+  const screen = new GenreView(gameLevel);
+
+  // eventListners for elements in bind()
+  // описать answerButtonClickHandler() внутри genreScreen
+
+  // принимает параметр isCorrect
+  // генерирует answer -
+  // меняет state
+  // делает changeScreen c новым state
+
+  const answerButtonClickHandler = (isCorrect) => {
+
+    const answer = {correct: isCorrect, time: 30};
+
+    let newState;
+
+    if (isCorrect === false) {
+      newState = Object.assign({}, state, {level: state.level + 1, notes: state.notes - 1});
+    } else {
+      newState = Object.assign({}, state, {level: state.level + 1});
+    }
+    newState.answers.push(answer);
+    console.log(`newState: `, newState);
+
+    console.log(`change screen _________________________`);
+
+    // changeScreen(newState);
+  };
+
+  screen.answerButtonClickHandler = answerButtonClickHandler;
 
   return screen.element;
+
 };
+
+
