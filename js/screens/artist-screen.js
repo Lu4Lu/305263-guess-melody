@@ -1,8 +1,6 @@
 import {render} from "../utils";
 import getHeader from "../header";
 import {changeScreen} from "./change-screen";
-// import {showResults} from "../data/showResults";
-// import {calculatePoints} from "../data/points";
 
 export const levelArtist = (state) => {
 

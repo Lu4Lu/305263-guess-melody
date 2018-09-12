@@ -1,4 +1,4 @@
-import {getRandomInt} from "./utils";
+import {getRandomInt} from "../utils";
 
 export const QuestionType = {
   ARTIST: `artist`,
