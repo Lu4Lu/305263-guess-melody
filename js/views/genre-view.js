@@ -10,8 +10,8 @@ export default class GenreView extends AbstractView {
     this.level = level;
     console.log(`this.level: `, this.level);
 
-    this.levelTracks = [...Object.entries(this.level.tracks)];
-    console.log(`this.levelTracks: `, this.levelTracks);
+    this.levelAnswers = [...Object.entries(this.level.tracks)];
+    console.log(`this.levelTracks: `, this.levelAnswers);
 
     this.questionTitle = this.level.questionTitle;
     console.log(`this.questionTitle: `, this.questionTitle);
@@ -24,7 +24,7 @@ export default class GenreView extends AbstractView {
     <section class="game__screen">
       <h2 class="game__title">${this.questionTitle}</h2>
       <form class="game__tracks">
-        ${this.levelTracks.map(([key, track]) => {
+        ${this.levelAnswers.map(([key, track]) => {
     return `${playerGenre(track.audio)}
           <div class="game__answer">
             <input class="game__input visually-hidden" type="checkbox" name="answer" value="${track.genre}" id="${key}">
@@ -60,20 +60,22 @@ export default class GenreView extends AbstractView {
 
     const gameSubmitElement = element.querySelector(`.game__submit`);
 
-    const form = element.querySelector(`.game__tracks`);
+    const artists = Array.from(element.querySelectorAll(`.artist`));
 
-    gameSubmitElement.addEventListener(`click`, (evt) => {
-      evt.preventDefault();
+    artists.forEach((artist) => {
+      gameSubmitElement.addEventListener(`click`, (evt) => {
+        evt.preventDefault();
 
-      console.log(`this.level:`, this.level);
+        console.log(`this.level:`, this.level);
 
-      const correctGenre = this.level.genre;
-      const currentAnswers = Array.from(form.querySelectorAll(`input`));
+        const correctArtist = this.level.name;
+        const currentAnswer = artist.querySelectorAll(`input`);
 
-      let isCorrect = isCorrectCheck(currentAnswers, correctGenre);
-      console.log(`isCorrect:`, isCorrect);
+        let isCorrect = isCorrectCheck(currentAnswers, correctArtist);
+        console.log(`isCorrect:`, isCorrect);
 
-      this.answerButtonClickHandler(isCorrect);
+        this.answerButtonClickHandler(isCorrect);
+      });
     });
 
   }

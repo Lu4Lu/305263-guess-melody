@@ -1,8 +1,3 @@
-// import {drawScreen, render} from "../utils";
-// import getHeader from "../header";
-// import {changeScreen} from "./change-screen";
-// import WelcomeView from "../views/welcome-view";
-// import {initialState} from "../data/play-data";
 import GenreView from "../views/genre-view";
 
 export default (state) => {
@@ -12,9 +7,6 @@ export default (state) => {
 
   const gameLevel = state.questions[levelIndex];
   // console.log(`game level: `, gameLevel);
-
-  const levelTracks = [...Object.entries(gameLevel.tracks)];
-  // console.log(`levelTracks: `, levelTracks);
 
   const screen = new GenreView(gameLevel);
 

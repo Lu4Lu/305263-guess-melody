@@ -52,51 +52,51 @@ const tracks = [
 
 // levels
 export const questionsMockData = [
-  {
-    type: QuestionType.GENRE,
-    questionTitle: `Выберите ${tracks[0].genre} треки`,
-    genre: tracks[0].genre,
-    tracks: {
-      answer1: {
-        audio: tracks[4].src,
-        genre: tracks[4].genre,
-      },
-      answer2: {
-        audio: tracks[2].src,
-        genre: tracks[2].genre,
-      },
-      answer3: {
-        audio: tracks[1].src,
-        genre: tracks[1].genre,
-      },
-      answer4: {
-        audio: tracks[0].src,
-        genre: tracks[0].genre
-      }
-    },
-  },
-
   // {
-  //   type: QuestionType.ARTIST,
-  //   questionTitle: `Выберите ${tracks[1].genre} треки`,
-  //   audio: tracks[2].src,
-  //   answers: {
+  //   type: QuestionType.GENRE,
+  //   questionTitle: `Выберите ${tracks[0].genre} треки`,
+  //   genre: tracks[0].genre,
+  //   tracks: {
   //     answer1: {
-  //       avatar: tracks[0].image,
-  //       name: tracks[0].name,
-  //       isCorrect: false
+  //       audio: tracks[4].src,
+  //       genre: tracks[4].genre,
   //     },
   //     answer2: {
-  //       avatar: tracks[1].image,
-  //       name: tracks[1].name,
-  //       isCorrect: false
+  //       audio: tracks[2].src,
+  //       genre: tracks[2].genre,
   //     },
   //     answer3: {
-  //       avatar: tracks[2].image,
-  //       name: tracks[2].name,
-  //       isCorrect: true},
+  //       audio: tracks[1].src,
+  //       genre: tracks[1].genre,
+  //     },
+  //     answer4: {
+  //       audio: tracks[0].src,
+  //       genre: tracks[0].genre
+  //     }
   //   },
   // },
+
+  {
+    type: QuestionType.ARTIST,
+    questionTitle: `Кто выполняет трек ${tracks[1].name}`,
+    audio: tracks[2].src,
+    answers: {
+      answer1: {
+        avatar: tracks[0].image,
+        name: tracks[0].name,
+        isCorrect: false
+      },
+      answer2: {
+        avatar: tracks[1].image,
+        name: tracks[1].name,
+        isCorrect: false
+      },
+      answer3: {
+        avatar: tracks[2].image,
+        name: tracks[2].name,
+        isCorrect: true},
+    },
+  },
 
   // {
   //   type: QuestionType.ARTIST
