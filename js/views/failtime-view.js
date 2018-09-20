@@ -5,7 +5,7 @@ export default class FailTimeView extends AbstractView {
   constructor(level) {
     super();
 
-    console.log(`failTimeView constructor_______________________`);
+    console.log(`failtTriesView constructor_______________________`);
     this.level = level;
   }
 
