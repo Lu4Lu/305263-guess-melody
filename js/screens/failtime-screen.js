@@ -1,14 +1,14 @@
 import FailTimeScreen from '../views/failtime-view';
-// import WelcomeView from "../views/welcome-view";
-// import {drawScreen} from "../utils";
-// import {initialState} from "../data/play-data";
+import {drawScreen} from "../utils";
+import {initialState} from "../data/play-data";
+import welcomeScreen from '../screens/welcome-screen';
 
 export default (state) => {
   const screen = new FailTimeScreen(state);
 
-  // screen.playButtonClickHandler = () => {
-  //   drawScreen(initialState);
-  // };
+  screen.playButtonClickHandler = () => {
+    drawScreen(welcomeScreen(initialState));
+  };
 
   return screen.element;
 };
