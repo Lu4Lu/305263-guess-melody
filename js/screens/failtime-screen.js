@@ -12,4 +12,3 @@ export default (state) => {
 
   return screen.element;
 };
-``

@@ -1,9 +1,12 @@
-import string from '../data/screen-strings';
+// import string from '../data/screen-strings';
 import AbstractView from '../views/abstract-view';
 
 export default class FailTimeView extends AbstractView {
-  constructor() {
+  constructor(level) {
     super();
+
+    console.log(`failTimeView constructor_______________________`);
+    this.level = level;
   }
 
   get template() {
@@ -21,10 +24,15 @@ export default class FailTimeView extends AbstractView {
 
   bind(element) {
     console.log(`element:`, element);
-    // const playButton = element.querySelector(`.welcome__button`);
-    //
-    // playButton.addEventListener(`click`, () => {
-    //   this.playButtonClickHandler();
-    // });
+
+    const replayButton = element.querySelector(`.result__replay`);
+
+    replayButton.addEventListener(`click`, (evt) => {
+      evt.preventDefault();
+
+      console.log(`this.level:`, this.level);
+
+      this.playButtonClickHandler();
+    });
   }
 }
