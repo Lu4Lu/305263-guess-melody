@@ -47,17 +47,6 @@ export default class ArtistView extends AbstractView {
   // то этот метод должен быть переопределён в наследнике с необходимой логикой
   bind(element) {
     console.log(`element:`, element);
-    //
-    // const isCorrectCheck = (array, genre)=>{
-    //
-    //   return array.every((item) => {
-    //     if (item.checked) {
-    //       return item.value === genre;
-    //     } else {
-    //       return item.value !== genre;
-    //     }
-    //   });
-    // };
 
     const artists = Array.from(element.querySelectorAll(`.artist`));
     console.log(`artists: `, artists);

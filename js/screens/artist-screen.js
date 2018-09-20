@@ -1,5 +1,4 @@
 import ArtistView from "../views/artist-view";
-// import GenreView from "../views/genre-view";
 
 export default (state) => {
 
@@ -10,7 +9,6 @@ export default (state) => {
   console.log(`game level: `, gameLevel);
 
   const screen = new ArtistView(gameLevel);
-
 
   const answerButtonClickHandler = (isCorrect) => {
 
