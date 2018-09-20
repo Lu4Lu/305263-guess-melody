@@ -71,7 +71,7 @@ export default class GenreView extends AbstractView {
         const correctArtist = this.level.name;
         const currentAnswer = artist.querySelectorAll(`input`);
 
-        let isCorrect = isCorrectCheck(currentAnswers, correctArtist);
+        let isCorrect = isCorrectCheck(currentAnswer, correctArtist);
         console.log(`isCorrect:`, isCorrect);
 
         this.answerButtonClickHandler(isCorrect);

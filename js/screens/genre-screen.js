@@ -40,7 +40,6 @@ export default (state) => {
   screen.answerButtonClickHandler = answerButtonClickHandler;
 
   return screen.element;
-
 };
 
 

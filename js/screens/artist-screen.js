@@ -25,9 +25,9 @@ export default (state) => {
     console.log(`newState: `, newState);
 
     console.log(`change screen _________________________`);
-    // });
-    screen.answerButtonClickHandler = answerButtonClickHandler;
   };
+  screen.answerButtonClickHandler = answerButtonClickHandler;
+  // };
   return screen.element;
 };
 
