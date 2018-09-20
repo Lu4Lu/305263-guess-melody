@@ -1,17 +1,15 @@
-import {render} from '../utils.js';
+import FailTimeScreen from '../views/failtime-view';
+// import WelcomeView from "../views/welcome-view";
+// import {drawScreen} from "../utils";
+// import {initialState} from "../data/play-data";
 
-// fail time screen
-const template = `
-  <section class="result">
-    <div class="result__logo"><img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"></div>
-    <h2 class="result__title">Увы и ах!</h2>
-    <p class="result__total result__total--fail">Время вышло! Вы не успели отгадать все мелодии</p>
-    <button class="result__replay" type="button">Попробовать ещё раз</button>
-  </section>
-  `;
+export default (state) => {
+  const screen = new FailTimeScreen(state);
 
-const element = render(template);
+  // screen.playButtonClickHandler = () => {
+  //   drawScreen(initialState);
+  // };
 
-export const replayElement = element.querySelector(`.result__replay`);
-
-export default element;
+  return screen.element;
+};
+``
